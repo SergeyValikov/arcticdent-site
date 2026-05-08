@@ -1,0 +1,367 @@
+.hero-section {
+  position: relative;
+  min-height: 676px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.hero-section__content {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(610px, 51.5%) 1fr;
+  min-height: 676px;
+  max-width: 1536px;
+  margin: 0 auto;
+}
+
+.hero-section__copy {
+  position: relative;
+  z-index: 3;
+  padding: 66px 0 78px 64px;
+}
+
+.hero-section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 43px;
+  margin: 0 0 30px;
+  padding: 0 24px;
+  color: #071b44;
+  background: #eaf2ff;
+  border-radius: 999px;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.hero-section__eyebrow span {
+  color: var(--blue);
+}
+
+.hero-section h1 {
+  max-width: 690px;
+  margin: 0;
+  color: #041233;
+  font-size: clamp(58px, 5.55vw, 76px);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+.hero-section h1 span {
+  display: block;
+  color: var(--blue);
+}
+
+.hero-section__lead {
+  max-width: 575px;
+  margin: 27px 0 0;
+  color: #52627e;
+  font-size: 22px;
+  line-height: 1.55;
+}
+
+.hero-section__trust {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  gap: 30px;
+  max-width: 690px;
+  margin-top: 43px;
+}
+
+.trust-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.trust-item__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  color: var(--blue);
+  background: #edf4ff;
+  border-radius: 50%;
+  box-shadow: inset 0 0 18px rgba(3, 45, 105, 0.05);
+}
+
+.trust-item__icon .line-icon {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.trust-item strong {
+  display: block;
+  color: #061334;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.trust-item p {
+  margin: 6px 0 0;
+  color: #061334;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.hero-section__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+  margin-top: 63px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  border-radius: var(--radius);
+  font-size: 17px;
+  line-height: 1.2;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button--primary {
+  gap: 22px;
+  min-width: 322px;
+  padding: 0 31px;
+  color: #ffffff;
+  background: linear-gradient(180deg, #126df0 0%, #0054d9 100%);
+  box-shadow: 0 12px 24px rgba(3, 82, 209, 0.27);
+}
+
+.button--primary span {
+  font-size: 30px;
+  line-height: 1;
+}
+
+.button--ghost {
+  gap: 13px;
+  min-width: 296px;
+  padding: 0 23px;
+  color: #42526d;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid #cbd9eb;
+  backdrop-filter: blur(10px);
+}
+
+.button__play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding-left: 2px;
+  color: #ffffff;
+  background: var(--blue);
+  border-radius: 50%;
+  font-size: 11px;
+}
+
+.hero-section__visual {
+  position: relative;
+  min-width: 0;
+  overflow: visible;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0 0 0 -148px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.hero-photo__image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: auto;
+  max-width: none;
+  height: 100%;
+  object-fit: contain;
+}
+
+.consult-card {
+  position: sticky;
+  top: 148px;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 22px;
+  width: 413px;
+  min-height: 170px;
+  margin: 480px 70px 0 auto;
+  padding: 23px 26px 22px;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(236, 242, 250, 0.96);
+  border-radius: 34px;
+  box-shadow: 0 24px 55px rgba(23, 68, 122, 0.16);
+}
+
+.consult-card__avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 32%, #25324a 0 15%, transparent 16%),
+    radial-gradient(circle at 50% 43%, #e9b79c 0 24%, transparent 25%),
+    linear-gradient(180deg, transparent 0 50%, #ffffff 51% 100%),
+    #e8f1fb;
+  box-shadow: inset 0 0 0 1px rgba(214, 225, 238, 0.72);
+}
+
+.consult-card h2 {
+  margin: 4px 0 10px;
+  color: #07142d;
+  font-size: 22px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.consult-card p {
+  margin: 0;
+  color: #31415e;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.consult-card a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+  color: var(--blue);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .hero-section,
+  .hero-section__content {
+    min-width: 0;
+  }
+
+  .hero-section {
+    min-height: auto;
+  }
+
+  .hero-section__content {
+    display: block;
+    min-height: auto;
+  }
+
+  .hero-section__copy {
+    padding: 42px 22px 28px;
+  }
+
+  .hero-section h1 {
+    max-width: 630px;
+    font-size: clamp(42px, 10vw, 64px);
+  }
+
+  .hero-section__lead {
+    font-size: 20px;
+  }
+
+  .hero-section__trust {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: none;
+  }
+
+  .hero-section__visual {
+    min-height: 420px;
+  }
+
+  .hero-photo {
+    inset: 0;
+  }
+
+  .consult-card {
+    position: relative;
+    top: auto;
+    width: min(413px, calc(100% - 40px));
+    margin: 232px 20px 18px auto;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero-section__copy {
+    padding-top: 32px;
+  }
+
+  .hero-section__eyebrow {
+    min-height: 38px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+
+  .hero-section h1 {
+    font-size: clamp(38px, 12vw, 54px);
+  }
+
+  .hero-section__lead {
+    font-size: 18px;
+  }
+
+  .hero-section__trust {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section__actions {
+    display: grid;
+    gap: 14px;
+  }
+
+  .button,
+  .button--primary,
+  .button--ghost {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-section__visual {
+    min-height: 390px;
+  }
+
+  .hero-photo {
+    right: -176px;
+  }
+
+  .consult-card {
+    grid-template-columns: 54px 1fr;
+    gap: 15px;
+    padding: 18px;
+    border-radius: 24px;
+  }
+
+  .consult-card__avatar {
+    width: 54px;
+    height: 54px;
+  }
+
+  .consult-card h2 {
+    font-size: 18px;
+  }
+
+  .consult-card p,
+  .consult-card a {
+    font-size: 14px;
+  }
+}
