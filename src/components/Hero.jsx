@@ -13,7 +13,8 @@ export default function Hero() {
       <div className="hero-section__content">
         <div className="hero-section__copy">
           <p className="hero-section__eyebrow">
-            <span>Современная</span> стоматология в Мурманске
+            <span>Современная</span>
+            {' стоматология в Мурманске'}
           </p>
 
           <h1 id="hero-title">
@@ -58,10 +59,10 @@ export default function Hero() {
           <aside className="consult-card">
             <span className="consult-card__avatar" />
             <div>
-              <h2>Бесплатная консультация</h2>
-              <p>Подберём оптимальный план лечения и ответим на все вопросы</p>
+              <h2>Есть вопрос по лечению?</h2>
+              <p>Ответим, подскажем по услугам и поможем выбрать удобное время для записи</p>
               <a href="#free-consultation">
-                Записаться бесплатно <span aria-hidden="true">→</span>
+                Задать вопрос <span aria-hidden="true">→</span>
               </a>
             </div>
           </aside>

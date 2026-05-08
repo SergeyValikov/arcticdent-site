@@ -1,7 +1,9 @@
 .site-shell {
+  --header-height: clamp(104px, 11.5vh, 122px);
+  --benefits-height: clamp(126px, 14.6vh, 158px);
   width: 100%;
   min-height: 100vh;
-  overflow-x: clip;
+  overflow: visible;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.82) 46%, rgba(241, 247, 255, 0.2) 100%),
     #f4f8fd;

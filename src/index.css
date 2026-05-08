@@ -26,6 +26,7 @@
 
 html {
   min-width: 320px;
+  overflow-x: clip;
   background: var(--surface-soft);
 }
 
@@ -33,6 +34,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
+  overflow-x: clip;
 }
 
 body,
@@ -54,4 +56,5 @@ img {
 
 #root {
   min-height: 100vh;
+  overflow-x: visible;
 }

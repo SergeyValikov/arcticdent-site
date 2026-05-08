@@ -2,16 +2,19 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(22px, 4.2vw, 78px);
-  padding: 40px 60px 38px;
+  align-items: center;
+  height: var(--benefits-height, 148px);
+  min-height: var(--benefits-height, 148px);
+  padding: 18px 60px;
   background: rgba(248, 252, 255, 0.94);
   box-shadow: inset 0 1px 0 rgba(213, 225, 241, 0.65);
 }
 
 .advantage {
   display: grid;
-  grid-template-columns: 98px 1fr;
+  grid-template-columns: clamp(76px, 8.2vh, 90px) 1fr;
   align-items: center;
-  gap: 30px;
+  gap: clamp(18px, 2vw, 26px);
   min-width: 0;
 }
 
@@ -19,17 +22,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 98px;
-  height: 98px;
+  width: clamp(76px, 8.2vh, 90px);
+  height: clamp(76px, 8.2vh, 90px);
   color: var(--blue);
   background: #edf4ff;
-  border-radius: 26px;
+  border-radius: 22px;
   box-shadow: inset 0 0 18px rgba(3, 45, 105, 0.05);
 }
 
 .advantage__icon .line-icon {
-  width: 42px;
-  height: 42px;
+  width: clamp(34px, 3.9vh, 40px);
+  height: clamp(34px, 3.9vh, 40px);
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -40,7 +43,7 @@
 .advantage h2 {
   margin: 0 0 8px;
   color: #061334;
-  font-size: clamp(24px, 2.1vw, 30px);
+  font-size: clamp(23px, 1.9vw, 28px);
   font-weight: 900;
   line-height: 1.12;
 }
@@ -49,14 +52,15 @@
   max-width: 235px;
   margin: 0;
   color: #304260;
-  font-size: 18px;
-  line-height: 1.45;
+  font-size: 17px;
+  line-height: 1.38;
 }
 
 @media (max-width: 1180px) {
   .advantages {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px;
+    height: auto;
     padding: 34px;
   }
 }
