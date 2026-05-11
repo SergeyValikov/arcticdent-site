@@ -14,7 +14,7 @@ export default function Hero() {
         <div className="hero-section__copy">
           <p className="hero-section__eyebrow">
             <span>Современная</span>
-            {' стоматология в Мурманске'}
+            <span className="hero-section__eyebrow-text">стоматология в Мурманске</span>
           </p>
 
           <h1 id="hero-title">

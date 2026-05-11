@@ -1,5 +1,5 @@
 .site-shell {
-  --header-height: clamp(104px, 11.5vh, 122px);
+  --header-height: clamp(104px, 8.1vw, 122px);
   --benefits-height: clamp(126px, 14.6vh, 158px);
   width: 100%;
   min-height: 100vh;
