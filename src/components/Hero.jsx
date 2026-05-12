@@ -57,7 +57,9 @@ export default function Hero() {
           </div>
 
           <aside className="consult-card">
-            <span className="consult-card__avatar" />
+            <span className="consult-card__avatar">
+              <img src="/assets/question-tooth.png" alt="" />
+            </span>
             <div>
               <h2>Есть вопрос по лечению?</h2>
               <p>Ответим, подскажем по услугам и поможем выбрать удобное время для записи</p>
