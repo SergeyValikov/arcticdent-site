@@ -46,14 +46,14 @@
   color: var(--blue);
 }
 
-.hero-section__eyebrow-text {
-  color: #071b44;
+.hero-section__eyebrow .hero-section__eyebrow-text {
+  color: #073047;
 }
 
 .hero-section h1 {
   max-width: 590px;
   margin: 0;
-  color: #041233;
+  color: #073047;
   font-size: clamp(48px, 4.55vw, 68px);
   font-weight: 760;
   line-height: 0.99;
@@ -337,14 +337,16 @@
     0 18px 36px rgba(34, 82, 136, 0.12),
     inset 0 0 0 1px rgba(205, 214, 226, 0.78),
     inset 0 1px 0 rgba(255, 255, 255, 0.82);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .consult-card__avatar img {
   display: block;
-  width: 150%;
-  height: 150%;
-  object-fit: contain;
+  width: 116%;
+  height: 116%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 24px;
 }
 
 .consult-card h2 {
