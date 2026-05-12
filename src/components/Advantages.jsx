@@ -1,11 +1,11 @@
 import './Advantages.css'
-import Icon from './Icon.jsx'
+import Icon from './Icon'
 
 const advantages = [
-  { icon: 'tooth', value: '15+ лет', text: 'заботимся о вашей улыбке' },
-  { icon: 'people', value: '5 000+', text: 'довольных пациентов ежегодно' },
-  { icon: 'shield', value: '100%', text: 'гарантия на все виды лечения' },
-  { icon: 'calendar', value: 'Удобная запись', text: 'онлайн или по телефону за 30 секунд' },
+  { icon: 'careTooth', value: '15+ лет', text: 'заботимся о вашей улыбке' },
+  { icon: 'patientHeart', value: '5 000+', text: 'довольных пациентов ежегодно' },
+  { icon: 'shieldCheck', value: '100%', text: 'гарантия на все виды лечения' },
+  { icon: 'calendarCheck', value: 'Удобная запись', text: 'онлайн или по телефону за 30 секунд' },
 ]
 
 export default function Advantages() {
@@ -16,7 +16,7 @@ export default function Advantages() {
           <span className="advantage__icon">
             <Icon name={item.icon} />
           </span>
-          <div>
+          <div className="advantage__content">
             <h2>{item.value}</h2>
             <p>{item.text}</p>
           </div>

@@ -52,24 +52,19 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-section__visual" aria-hidden="true">
+        <div className="hero-section__visual">
           <div className="hero-photo">
             <img className="hero-photo__image" src="/assets/hero-clean.png" alt="" />
           </div>
-
-          <aside className="consult-card">
-            <span className="consult-card__avatar">
-              <img src="/assets/question-tooth.png" alt="" />
-            </span>
-            <div>
-              <h2>Есть вопрос по лечению?</h2>
-              <p>Ответим, подскажем по услугам и поможем выбрать удобное время для записи</p>
-              <a href="#free-consultation">
-                Задать вопрос <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </aside>
         </div>
+
+        <aside className="consult-card">
+          <div className="consult-card__image-frame" aria-hidden="true">
+            <img className="consult-card__image" src="/assets/question-card.png" alt="" />
+            <span className="consult-card__cta-glow" />
+          </div>
+          <a className="consult-card__cta-hotspot" href="#free-consultation" aria-label="Задать вопрос" />
+        </aside>
       </div>
     </section>
   )

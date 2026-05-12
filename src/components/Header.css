@@ -100,15 +100,25 @@
   height: 58%;
 }
 
-.header__social-link--vk svg,
-.header__social-link--telegram svg {
+.header__social-link--vk svg {
   fill: currentColor;
 }
 
-.header__social-link--telegram svg {
-  width: 55%;
-  height: 55%;
-  transform: translateX(-1px);
+.header__social-link--vk svg {
+  width: 76%;
+  height: 76%;
+  transform: translateX(3px);
+}
+
+.header__social-link--max {
+  color: var(--blue);
+}
+
+.header__social-link--max img {
+  display: block;
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
 }
 
 .header__social-link--phone {
