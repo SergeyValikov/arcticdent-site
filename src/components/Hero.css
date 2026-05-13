@@ -670,7 +670,7 @@
   }
 
   .hero-photo__image {
-    object-position: 62% center;
+    object-position: 42% center;
   }
 
   .hero-photo::before {
@@ -691,7 +691,7 @@
     z-index: 4;
     width: min(520px, calc(100% - 48px));
     max-width: 520px;
-    margin: 24px auto 0;
+    margin: 24px 0 0 clamp(28px, 6vw, 54px);
     padding: 0;
     pointer-events: auto;
   }
@@ -743,7 +743,7 @@
   }
 
   .hero-photo__image {
-    object-position: 66% center;
+    object-position: 40% center;
   }
 
   .hero-photo::before {
@@ -760,7 +760,7 @@
 
   .consult-card {
     width: min(520px, calc(100% - 36px));
-    margin-top: 22px;
+    margin: 22px 0 0 22px;
   }
 }
 
@@ -787,7 +787,7 @@
   }
 
   .hero-photo__image {
-    object-position: 62% center;
+    object-position: 38% center;
   }
 
   .hero-photo::before {
@@ -796,7 +796,7 @@
   }
 
   .consult-card {
-    width: calc(100% - 28px);
-    margin-top: 20px;
+    width: calc(100% - 36px);
+    margin: 20px 0 0 18px;
   }
 }
