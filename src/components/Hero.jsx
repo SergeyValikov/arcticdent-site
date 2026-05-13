@@ -23,7 +23,8 @@ export default function Hero() {
           </h1>
 
           <p className="hero-section__lead">
-            Комплексный подход, передовые технологии и забота о вашем комфорте
+            <span>Комплексный подход, передовые технологии</span>
+            <span>и забота о вашем комфорте</span>
           </p>
 
           <div className="hero-section__trust">
