@@ -11,14 +11,14 @@
     #f3f8ff;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
   .site-shell {
-    --header-height: 116px;
+    --header-height: clamp(118px, 12.2vw, 136px);
   }
 }
 
 @media (max-width: 560px) {
   .site-shell {
-    --header-height: 120px;
+    --header-height: 116px;
   }
 }
