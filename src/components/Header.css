@@ -240,64 +240,110 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) and (min-width: 861px) {
   .header {
-    grid-template-columns: 1fr auto;
-    height: auto;
-    min-height: 86px;
-    gap: 14px;
-    padding: 14px 18px;
+    grid-template-columns: minmax(210px, 258px) minmax(330px, 1fr) 130px;
+    column-gap: 12px;
+    width: calc(100% - 18px);
+    padding-inline: 16px;
   }
 
   .header__logo img,
   .logo img {
-    width: clamp(250px, 52vw, 330px);
+    width: clamp(210px, 22.5vw, 250px);
   }
 
-  .header__nav,
+  .header__nav {
+    gap: clamp(10px, 1.55vw, 16px);
+    font-size: clamp(12.2px, 1.28vw, 13.5px);
+  }
+
   .header__socials {
-    display: none;
+    gap: 8px;
   }
 
-  .header__contacts {
-    display: grid;
-    justify-items: end;
-    gap: 7px;
-    color: #11234c;
-    white-space: nowrap;
+  .header__social-link {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 860px) {
+  .header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "logo socials"
+      "nav nav";
+    height: auto;
+    min-height: 116px;
+    gap: 9px 14px;
+    padding: 12px 18px 13px;
   }
 
-  .header__phone {
-    color: #041337;
-    font-size: 16px;
-    font-weight: 800;
-    line-height: 1.1;
+  .header__logo {
+    grid-area: logo;
   }
 
-  .header__city {
-    font-size: 14px;
-    line-height: 1.1;
+  .header__logo img,
+  .logo img {
+    width: clamp(238px, 46vw, 306px);
+  }
+
+  .header__nav {
+    grid-area: nav;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7px clamp(16px, 3.4vw, 26px);
+    width: 100%;
+    font-size: clamp(12px, 1.9vw, 14px);
+    line-height: 1.12;
+    white-space: normal;
+  }
+
+  .header__actions {
+    grid-area: socials;
+  }
+
+  .header__socials {
+    display: flex;
+    gap: 9px;
+  }
+
+  .header__social-link {
+    width: 40px;
+    height: 40px;
   }
 }
 
 @media (max-width: 560px) {
   .header {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "logo"
+      "nav";
     width: calc(100% - 16px);
-    min-height: 78px;
-    padding: 12px 14px;
+    min-height: 120px;
+    row-gap: 9px;
+    padding: 12px 14px 13px;
     border-radius: 0 0 22px 22px;
+  }
+
+  .header__logo {
+    justify-self: center;
   }
 
   .header__logo img,
   .logo img {
-    width: clamp(218px, 62vw, 270px);
+    width: clamp(218px, 68vw, 268px);
   }
 
-  .header__phone {
-    font-size: 13px;
+  .header__actions {
+    display: none;
   }
 
-  .header__city {
-    font-size: 12px;
+  .header__nav {
+    gap: 7px clamp(10px, 3vw, 14px);
+    font-size: clamp(11px, 3vw, 12.5px);
   }
 }
