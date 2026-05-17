@@ -1,8 +1,10 @@
 .site-header,
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 50%;
   z-index: 1000;
+  transform: translateX(-50%);
 }
 
 .header {
@@ -13,7 +15,7 @@
   width: min(calc(100% - 64px), 1984px);
   height: var(--header-height, 96px);
   min-height: var(--header-height, 96px);
-  margin: 0 auto calc(-1 * var(--header-height, 96px));
+  margin: 0;
   padding: 8px clamp(24px, 3vw, 44px);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.52) 0%, rgba(255, 255, 255, 0.26) 100%),
