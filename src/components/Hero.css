@@ -268,7 +268,7 @@
   filter: blur(2px);
   opacity: 0;
   transform: translateX(-120%) skewX(-18deg);
-  animation: primaryButtonSheen 5s cubic-bezier(0.22, 0.68, 0.28, 1) infinite;
+  animation: primaryButtonSheen 4s cubic-bezier(0.22, 0.68, 0.28, 1) infinite;
 }
 
 .button--primary:hover {
@@ -284,17 +284,16 @@
 }
 
 @keyframes primaryButtonSheen {
-  0%,
-  62% {
+  0% {
     opacity: 0;
     transform: translateX(-120%) skewX(-18deg);
   }
 
-  72% {
+  10% {
     opacity: 0.42;
   }
 
-  88%,
+  24%,
   100% {
     opacity: 0;
     transform: translateX(520%) skewX(-18deg);
