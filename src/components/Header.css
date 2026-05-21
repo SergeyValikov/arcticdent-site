@@ -2,9 +2,10 @@
 .header {
   position: fixed;
   top: 0;
-  left: 50%;
+  right: 0;
+  left: 0;
   z-index: 1000;
-  transform: translateX(-50%);
+  margin-inline: auto;
 }
 
 .header {
@@ -15,7 +16,7 @@
   width: min(calc(100% - 64px), 1984px);
   height: var(--header-height, 96px);
   min-height: var(--header-height, 96px);
-  margin: 0;
+  margin: 0 auto;
   padding: 8px clamp(24px, 3vw, 44px);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.52) 0%, rgba(255, 255, 255, 0.26) 100%),

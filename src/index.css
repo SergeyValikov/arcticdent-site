@@ -25,16 +25,19 @@
 }
 
 html {
-  min-width: 320px;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
   background: var(--surface-soft);
 }
 
 body {
-  min-width: 320px;
+  width: 100%;
+  max-width: 100%;
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
+  overscroll-behavior-x: none;
 }
 
 body,
@@ -55,6 +58,8 @@ img {
 }
 
 #root {
+  width: 100%;
+  max-width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
 }
