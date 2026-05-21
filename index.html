@@ -4,6 +4,38 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      ;(function () {
+        var root = document.documentElement
+
+        function setMobileViewportState() {
+          var viewport = document.querySelector('meta[name="viewport"]')
+          if (viewport) {
+            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0')
+          }
+
+          var isTouch = navigator.maxTouchPoints > 0 || 'ontouchstart' in window
+          var screenWidth = Math.min(screen.width || 9999, screen.height || 9999)
+          var liveViewport =
+            window.visualViewport && window.visualViewport.width
+              ? window.visualViewport.width
+              : window.innerWidth || screenWidth
+          var viewportWidth = Math.min(
+            screenWidth,
+            liveViewport
+          )
+
+          root.style.setProperty('--real-vw', Math.round(viewportWidth) + 'px')
+          root.classList.toggle('real-mobile', isTouch && viewportWidth <= 560)
+        }
+
+        setMobileViewportState()
+        window.addEventListener('resize', setMobileViewportState, { passive: true })
+        if (window.visualViewport) {
+          window.visualViewport.addEventListener('resize', setMobileViewportState, { passive: true })
+        }
+      })()
+    </script>
     <title>arcticdent-site</title>
   </head>
   <body>

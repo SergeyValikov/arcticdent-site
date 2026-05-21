@@ -29,6 +29,7 @@ html {
   max-width: 100%;
   overflow-x: hidden;
   background: var(--surface-soft);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -62,4 +63,284 @@ img {
   max-width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+html.real-mobile,
+html.real-mobile body,
+html.real-mobile #root {
+  width: var(--real-vw, 100vw);
+  max-width: var(--real-vw, 100vw);
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+html.real-mobile body {
+  position: relative;
+}
+
+html.real-mobile .site-shell {
+  width: var(--real-vw, 100vw);
+  max-width: var(--real-vw, 100vw);
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+html.real-mobile .header {
+  --header-pad-x: 14px;
+
+  left: 8px;
+  right: auto;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "logo socials"
+    "nav nav";
+  width: calc(var(--real-vw, 100vw) - 16px);
+  max-width: calc(var(--real-vw, 100vw) - 16px);
+  min-width: 0;
+  height: auto;
+  min-height: 116px;
+  margin: 0;
+  gap: 8px 10px;
+  padding: 12px 14px 13px;
+  border-radius: 0 0 22px 22px;
+}
+
+html.real-mobile .header__logo {
+  grid-area: logo;
+  justify-self: start;
+  min-width: 0;
+}
+
+html.real-mobile .header__logo img,
+html.real-mobile .logo img {
+  width: clamp(164px, calc(var(--real-vw, 100vw) * 0.55), 228px);
+  max-width: min(228px, calc(var(--real-vw, 100vw) - 160px));
+}
+
+html.real-mobile .header__actions {
+  grid-area: socials;
+  display: flex;
+  justify-self: end;
+  min-width: 0;
+}
+
+html.real-mobile .header__socials {
+  gap: clamp(6px, calc(var(--real-vw, 100vw) * 0.018), 8px);
+}
+
+html.real-mobile .header__social-link {
+  width: clamp(32px, calc(var(--real-vw, 100vw) * 0.082), 34px);
+  height: clamp(32px, calc(var(--real-vw, 100vw) * 0.082), 34px);
+}
+
+html.real-mobile .header__nav {
+  grid-area: nav;
+  display: flex;
+  justify-content: space-between;
+  gap: 0;
+  width: 100%;
+  min-width: 0;
+  padding-top: 10px;
+  color: #061334;
+  font-size: clamp(9.4px, calc(var(--real-vw, 100vw) * 0.03), 12.4px);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+html.real-mobile .header__nav::before {
+  left: -14px;
+  right: -14px;
+}
+
+html.real-mobile .hero-section {
+  width: var(--real-vw, 100vw);
+  max-width: var(--real-vw, 100vw);
+  min-width: 0;
+  height: auto;
+  min-height: 760px;
+  overflow: hidden;
+}
+
+html.real-mobile .hero-section__content {
+  display: block;
+  width: var(--real-vw, 100vw);
+  max-width: var(--real-vw, 100vw);
+  min-width: 0;
+  height: auto;
+  min-height: 760px;
+  overflow: hidden;
+}
+
+html.real-mobile .hero-section__content::before {
+  width: var(--real-vw, 100vw);
+  background:
+    radial-gradient(ellipse 78% 88% at 24% 44%, rgba(255, 255, 255, 0.99) 0%, rgba(255, 255, 255, 0.95) 52%, rgba(255, 255, 255, 0.66) 72%, rgba(255, 255, 255, 0.16) 90%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.99) 0%, rgba(255, 255, 255, 0.94) 56%, rgba(255, 255, 255, 0.62) 74%, rgba(255, 255, 255, 0.14) 92%, rgba(255, 255, 255, 0) 100%);
+}
+
+html.real-mobile .hero-section__copy {
+  width: var(--real-vw, 100vw);
+  max-width: var(--real-vw, 100vw);
+  padding: calc(var(--header-height, 116px) + 30px) 18px 24px;
+}
+
+html.real-mobile .hero-section__eyebrow {
+  max-width: calc(var(--real-vw, 100vw) - 36px);
+  padding-inline: 12px;
+  font-size: clamp(11px, calc(var(--real-vw, 100vw) * 0.031), 13px);
+  white-space: nowrap;
+}
+
+html.real-mobile .hero-section h1 {
+  max-width: calc(var(--real-vw, 100vw) - 36px);
+  font-size: clamp(36px, calc(var(--real-vw, 100vw) * 0.126), 52px);
+  line-height: 1.03;
+}
+
+html.real-mobile .hero-section h1 span {
+  max-width: min(320px, calc(var(--real-vw, 100vw) - 36px));
+}
+
+html.real-mobile .hero-section__lead {
+  max-width: calc(var(--real-vw, 100vw) - 36px);
+  font-size: clamp(17px, calc(var(--real-vw, 100vw) * 0.043), 18px);
+  line-height: 1.52;
+}
+
+html.real-mobile .hero-section__trust {
+  grid-template-columns: 1fr;
+  gap: 14px;
+  max-width: min(340px, calc(var(--real-vw, 100vw) - 36px));
+  margin-top: 30px;
+}
+
+html.real-mobile .trust-item {
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 14px;
+  min-width: 0;
+}
+
+html.real-mobile .trust-item__icon {
+  width: 58px;
+  height: 58px;
+}
+
+html.real-mobile .trust-item strong,
+html.real-mobile .trust-item p {
+  font-size: clamp(18px, calc(var(--real-vw, 100vw) * 0.048), 20px);
+}
+
+html.real-mobile .hero-section__actions {
+  grid-template-columns: 1fr;
+  gap: 16px;
+  width: calc(var(--real-vw, 100vw) - 36px);
+  max-width: 420px;
+  margin-top: 30px;
+}
+
+html.real-mobile .button {
+  width: 100%;
+  min-height: 60px;
+  font-size: clamp(15px, calc(var(--real-vw, 100vw) * 0.043), 18px);
+}
+
+html.real-mobile .button--primary {
+  justify-content: space-between;
+  gap: 14px;
+  padding-inline: 18px;
+}
+
+html.real-mobile .button--ghost {
+  gap: 12px;
+  padding-inline: 16px;
+}
+
+html.real-mobile .hero-section__visual {
+  position: absolute;
+  inset: 0;
+  width: var(--real-vw, 100vw);
+  max-width: var(--real-vw, 100vw);
+  height: auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+html.real-mobile .hero-photo {
+  inset: 0;
+  overflow: hidden;
+}
+
+html.real-mobile .hero-photo__image {
+  top: clamp(292px, calc(var(--real-vw, 100vw) * 0.75), 322px);
+  right: clamp(-280px, calc(var(--real-vw, 100vw) * -0.62), -230px);
+  bottom: auto;
+  left: auto;
+  width: clamp(650px, calc(var(--real-vw, 100vw) * 1.84), 800px);
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 86%, transparent 100%);
+  transform-origin: 72% 44%;
+}
+
+html.real-mobile .hero-photo::before {
+  width: 70%;
+  background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.84) 38%, rgba(255, 255, 255, 0.34) 66%, rgba(255, 255, 255, 0.06) 100%);
+}
+
+html.real-mobile .consult-card {
+  position: relative;
+  inset: auto;
+  z-index: 4;
+  width: calc(var(--real-vw, 100vw) - 36px);
+  max-width: 520px;
+  margin: 20px auto 0;
+  pointer-events: auto;
+}
+
+html.real-mobile .advantages {
+  --adv-icon-size: 76px;
+  --adv-svg-size: 42px;
+  --adv-gap: 16px;
+  --adv-item-pad: 0;
+
+  grid-template-columns: 1fr;
+  width: calc(var(--real-vw, 100vw) - 28px);
+  max-width: calc(var(--real-vw, 100vw) - 28px);
+  min-width: 0;
+  height: auto;
+  min-height: 0;
+  margin: 16px auto 28px;
+  padding: 24px 20px;
+  gap: 26px;
+  border-radius: 22px;
+}
+
+html.real-mobile .advantage {
+  grid-template-columns: var(--adv-icon-size) minmax(0, 1fr);
+  gap: var(--adv-gap);
+  min-width: 0;
+  padding: 0;
+}
+
+html.real-mobile .advantage + .advantage::before {
+  display: none;
+}
+
+html.real-mobile .advantage__content {
+  min-width: 0;
+  min-height: auto;
+}
+
+html.real-mobile .advantage h2 {
+  min-height: auto;
+  font-size: 23px;
+}
+
+html.real-mobile .advantage p {
+  max-width: 100%;
+  font-size: 16px;
 }
