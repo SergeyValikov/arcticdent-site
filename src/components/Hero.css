@@ -962,7 +962,10 @@
   }
 
   .hero-section__eyebrow {
-    white-space: normal;
+    max-width: calc(100vw - 36px);
+    padding-inline: 12px;
+    font-size: clamp(11.2px, 3.45vw, 13px);
+    white-space: nowrap;
   }
 
   .hero-section__visual {
@@ -972,7 +975,17 @@
   }
 
   .hero-photo__image {
-    object-position: 30% center;
+    top: clamp(292px, 75vw, 322px);
+    right: clamp(-280px, -62vw, -230px);
+    bottom: auto;
+    left: auto;
+    width: clamp(650px, 184vw, 800px);
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 86%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 86%, transparent 100%);
+    transform-origin: 72% 44%;
   }
 
   .hero-photo::before {
@@ -982,6 +995,56 @@
 
   .consult-card {
     width: calc(100% - 36px);
-    margin: 20px 0 0 0;
+    margin: 20px auto 0;
+  }
+}
+
+@media (max-width: 340px) {
+  .header {
+    --header-pad-x: 12px;
+
+    width: calc(100% - 12px);
+    padding-inline: 12px;
+  }
+
+  .header__logo img,
+  .logo img {
+    width: clamp(164px, 53vw, 182px);
+  }
+
+  .header__socials {
+    gap: 6px;
+  }
+
+  .header__social-link {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header__nav {
+    font-size: clamp(9.4px, 2.95vw, 10.4px);
+  }
+
+  .hero-section__copy {
+    padding-inline: 18px;
+  }
+
+  .hero-section__eyebrow {
+    padding-inline: 10px;
+    font-size: 11px;
+  }
+
+  .button {
+    font-size: 14px;
+  }
+
+  .button--primary {
+    gap: 12px;
+    padding-inline: 18px;
+  }
+
+  .button--ghost {
+    gap: 10px;
+    padding-inline: 14px;
   }
 }
