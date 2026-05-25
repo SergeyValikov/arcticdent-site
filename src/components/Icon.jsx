@@ -45,6 +45,19 @@ const icons = {
       <path d="m7.8 14.05 1.55 1.55 3.02-3.02m2.1 2.72h2.4" />
     </>
   ),
+  infoCircle: (
+    <>
+      <circle cx="12" cy="12" r="8.25" />
+      <path d="M12 10.7v5.25" />
+      <path d="M12 7.8h.08" />
+    </>
+  ),
+  mapPin: (
+    <>
+      <path d="M12 20.2s6.2-5.55 6.2-10.35A6.2 6.2 0 0 0 5.8 9.85C5.8 14.65 12 20.2 12 20.2Z" />
+      <circle cx="12" cy="9.85" r="2.25" />
+    </>
+  ),
 }
 
 export default function Icon({ name }) {

@@ -20,6 +20,6 @@
 
 @media (max-width: 560px) {
   .site-shell {
-    --header-height: 116px;
+    --header-height: 114px;
   }
 }

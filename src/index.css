@@ -86,7 +86,7 @@ html.real-mobile .site-shell {
 }
 
 html.real-mobile .header {
-  --header-pad-x: 14px;
+  --header-pad-x: 13px;
 
   left: 8px;
   right: auto;
@@ -98,10 +98,10 @@ html.real-mobile .header {
   max-width: calc(var(--real-vw, 100vw) - 16px);
   min-width: 0;
   height: auto;
-  min-height: 116px;
+  min-height: 114px;
   margin: 0;
-  gap: 8px 10px;
-  padding: 12px 14px 13px;
+  gap: 8px 8px;
+  padding: 12px 13px;
   border-radius: 0 0 22px 22px;
 }
 
@@ -113,8 +113,8 @@ html.real-mobile .header__logo {
 
 html.real-mobile .header__logo img,
 html.real-mobile .logo img {
-  width: clamp(164px, calc(var(--real-vw, 100vw) * 0.55), 228px);
-  max-width: min(228px, calc(var(--real-vw, 100vw) - 160px));
+  width: clamp(150px, calc(var(--real-vw, 100vw) * 0.4), 168px);
+  max-width: min(168px, calc(var(--real-vw, 100vw) - 176px));
 }
 
 html.real-mobile .header__actions {
@@ -125,12 +125,12 @@ html.real-mobile .header__actions {
 }
 
 html.real-mobile .header__socials {
-  gap: clamp(6px, calc(var(--real-vw, 100vw) * 0.018), 8px);
+  gap: clamp(3px, calc(var(--real-vw, 100vw) * 0.01), 4px);
 }
 
 html.real-mobile .header__social-link {
-  width: clamp(32px, calc(var(--real-vw, 100vw) * 0.082), 34px);
-  height: clamp(32px, calc(var(--real-vw, 100vw) * 0.082), 34px);
+  width: clamp(27px, calc(var(--real-vw, 100vw) * 0.072), 28px);
+  height: clamp(27px, calc(var(--real-vw, 100vw) * 0.072), 28px);
 }
 
 html.real-mobile .header__nav {
@@ -140,17 +140,17 @@ html.real-mobile .header__nav {
   gap: 0;
   width: 100%;
   min-width: 0;
-  padding-top: 10px;
+  padding: 9px 4px 0;
   color: #061334;
-  font-size: clamp(9.4px, calc(var(--real-vw, 100vw) * 0.03), 12.4px);
-  font-weight: 500;
+  font-size: clamp(10.7px, calc(var(--real-vw, 100vw) * 0.0308), 12.4px);
+  font-weight: 640;
   line-height: 1.2;
   white-space: nowrap;
 }
 
 html.real-mobile .header__nav::before {
-  left: -14px;
-  right: -14px;
+  left: -13px;
+  right: -13px;
 }
 
 html.real-mobile .hero-section {
@@ -302,10 +302,8 @@ html.real-mobile .consult-card {
 }
 
 html.real-mobile .advantages {
-  --adv-icon-size: 76px;
-  --adv-svg-size: 42px;
-  --adv-gap: 16px;
-  --adv-item-pad: 0;
+  --adv-icon-size: 58px;
+  --adv-svg-size: 32px;
 
   grid-template-columns: 1fr;
   width: calc(var(--real-vw, 100vw) - 28px);
@@ -314,16 +312,29 @@ html.real-mobile .advantages {
   height: auto;
   min-height: 0;
   margin: 16px auto 28px;
-  padding: 24px 20px;
-  gap: 26px;
-  border-radius: 22px;
+  padding: 0;
+  gap: 12px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 html.real-mobile .advantage {
   grid-template-columns: var(--adv-icon-size) minmax(0, 1fr);
-  gap: var(--adv-gap);
+  gap: 14px;
   min-width: 0;
-  padding: 0;
+  min-height: 112px;
+  padding: 16px 15px;
+  border-radius: 17px;
+}
+
+html.real-mobile .advantage:nth-child(odd),
+html.real-mobile .advantage:nth-child(even) {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 html.real-mobile .advantage + .advantage::before {
@@ -335,12 +346,80 @@ html.real-mobile .advantage__content {
   min-height: auto;
 }
 
+html.real-mobile .advantage__heading {
+  gap: 10px;
+}
+
 html.real-mobile .advantage h2 {
   min-height: auto;
   font-size: 23px;
+  line-height: 1.08;
 }
 
 html.real-mobile .advantage p {
   max-width: 100%;
-  font-size: 16px;
+  margin-top: 6px;
+  font-size: 14.5px;
+  line-height: 1.25;
+}
+
+@media (max-width: 360px) {
+  html.real-mobile .header {
+    --header-pad-x: 12px;
+
+    min-height: 112px;
+    gap: 8px 7px;
+    padding: 11px 12px;
+  }
+
+  html.real-mobile .header__logo img,
+  html.real-mobile .logo img {
+    width: 146px;
+  }
+
+  html.real-mobile .header__socials {
+    gap: 3px;
+  }
+
+  html.real-mobile .header__social-link {
+    width: 27px;
+    height: 27px;
+  }
+
+  html.real-mobile .header__nav {
+    padding-inline: 3px;
+    font-size: 10.7px;
+  }
+
+  html.real-mobile .header__nav::before {
+    left: -12px;
+    right: -12px;
+  }
+
+  html.real-mobile .advantages {
+    width: calc(var(--real-vw, 100vw) - 24px);
+    max-width: calc(var(--real-vw, 100vw) - 24px);
+  }
+
+  html.real-mobile .advantage {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 12px;
+    padding-inline: 12px;
+  }
+
+  html.real-mobile .advantage:nth-child(odd),
+  html.real-mobile .advantage:nth-child(even) {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  html.real-mobile .advantage__icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  html.real-mobile .advantage__icon .line-icon {
+    width: 29px;
+    height: 29px;
+  }
 }

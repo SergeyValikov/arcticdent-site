@@ -2,7 +2,7 @@ import './Hero.css'
 import Icon from './Icon.jsx'
 
 const trustItems = [
-  { icon: 'shield', title: 'Гарантия', text: 'на все виды лечения' },
+  { icon: 'shield', title: 'Все', text: 'виды лечения' },
   { icon: 'tooth', title: 'Опытные врачи', text: 'стаж от 10 лет' },
   { icon: 'tool', title: 'Современное', text: 'оборудование' },
 ]

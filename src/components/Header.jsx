@@ -1,6 +1,6 @@
 import './Header.css'
 
-const navItems = ['Услуги', 'Врачи', 'О клинике', 'Цены', 'Отзывы', 'Контакты']
+const navItems = ['Врачи', 'Услуги', 'Цены', 'Документы']
 
 export default function Header() {
   return (
@@ -26,6 +26,18 @@ export default function Header() {
           </a>
           <a className="header__social-link header__social-link--max" href="#max" aria-label="MAX">
             <img src="/assets/max-logo.png" alt="" />
+          </a>
+          <a className="header__social-link header__social-link--telegram" href="#telegram" aria-label="Telegram">
+            <svg viewBox="0 0 56 56" aria-hidden="true" focusable="false">
+              <path d="M47.8 10.4 40.6 45c-.54 2.55-2.04 3.14-4.12 1.96l-11.4-8.4-5.5 5.3c-.62.6-1.12 1.1-2.3 1.1l.82-11.62 21.14-19.1c.92-.82-.2-1.28-1.42-.46L11.68 30.24.42 26.72c-2.45-.76-2.5-2.45.5-3.62L45.02 6.1c2.05-.76 3.84.5 2.78 4.3Z" />
+            </svg>
+          </a>
+          <a className="header__social-link header__social-link--accessibility" href="#accessibility" aria-label="Версия для слабовидящих">
+            <svg viewBox="0 0 56 56" aria-hidden="true" focusable="false">
+              <path d="M6.5 28s7.7-13 21.5-13 21.5 13 21.5 13S41.8 41 28 41 6.5 28 6.5 28Z" />
+              <circle cx="28" cy="28" r="7.1" />
+              <path d="M28 6.9v5.1m0 32v5.1m15-36.1-3.6 3.6M16.6 39.4 13 43m30-1-3.6-3.6M16.6 16.6 13 13" />
+            </svg>
           </a>
           <a className="header__social-link header__social-link--phone" href="#phone" aria-label="Позвонить">
             <svg viewBox="0 0 56 56" aria-hidden="true" focusable="false">

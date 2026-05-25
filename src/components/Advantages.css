@@ -1,29 +1,22 @@
 .advantages {
-  --adv-icon-size: 96px;
-  --adv-svg-size: 52px;
-  --adv-gap: clamp(18px, 1.35vw, 24px);
-  --adv-item-pad: clamp(16px, 1.55vw, 30px);
+  --adv-icon-size: 72px;
+  --adv-svg-size: 40px;
 
   position: relative;
   z-index: 6;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: stretch;
   width: min(calc(100% - 96px), 1900px);
-  height: var(--benefits-height, 156px);
-  min-height: var(--benefits-height, 156px);
-  margin: var(--first-screen-bottom-gap, 28px) auto var(--first-screen-bottom-gap, 28px);
-  padding: clamp(16px, 2vh, 22px) clamp(24px, 3vw, 42px);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.56) 0%, rgba(255, 255, 255, 0.3) 100%),
-    rgba(255, 255, 255, 0.42);
-  border: 1px solid rgba(235, 243, 253, 0.58);
-  border-radius: 26px;
-  box-shadow:
-    0 24px 72px rgba(18, 61, 117, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(22px) saturate(1.35);
-  -webkit-backdrop-filter: blur(22px) saturate(1.35);
+  height: auto;
+  min-height: 0;
+  margin: clamp(26px, 3.4vh, 42px) auto var(--first-screen-bottom-gap, 28px);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  gap: clamp(18px, 2vw, 32px);
 }
 
 .advantage {
@@ -31,62 +24,71 @@
   display: grid;
   grid-template-columns: var(--adv-icon-size) minmax(0, 1fr);
   align-items: center;
-  gap: var(--adv-gap);
-  height: 100%;
+  gap: clamp(18px, 1.55vw, 28px);
   min-width: 0;
-  padding: 0 var(--adv-item-pad);
+  min-height: 136px;
+  height: 100%;
+  padding: 0 clamp(24px, 2.4vw, 42px);
+  color: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(246, 251, 255, 0.62) 100%);
+  border: 1px solid rgba(226, 237, 252, 0.62);
+  border-radius: 20px;
+  box-shadow:
+    0 18px 46px rgba(18, 61, 117, 0.085),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.24s ease,
+    box-shadow 0.24s ease,
+    border-color 0.24s ease,
+    background-color 0.24s ease;
 }
 
-.advantage + .advantage::before {
+.advantage::after {
   content: "";
   position: absolute;
-  top: 13%;
-  bottom: 13%;
-  left: 0;
-  width: 1px;
-  background: linear-gradient(180deg, rgba(198, 211, 228, 0) 0%, rgba(185, 199, 218, 0.72) 50%, rgba(198, 211, 228, 0) 100%);
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 12% 18%, rgba(61, 136, 255, 0.08), rgba(61, 136, 255, 0) 34%);
+  opacity: 0.72;
+  transition: opacity 0.24s ease;
+}
+
+.advantage:hover {
+  transform: translateY(-2px);
+  border-color: rgba(174, 208, 252, 0.72);
+  box-shadow:
+    0 22px 52px rgba(18, 61, 117, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.advantage:hover::after {
+  opacity: 1;
 }
 
 .advantage__icon {
   position: relative;
-  isolation: isolate;
-  contain: paint;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: var(--adv-icon-size);
   height: var(--adv-icon-size);
-  color: #075ee8;
+  color: var(--blue);
   background:
-    radial-gradient(circle at 32% 18%, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0) 42%),
-    radial-gradient(circle at 70% 86%, rgba(62, 142, 255, 0.16) 0%, rgba(62, 142, 255, 0) 48%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.94) 0%, rgba(236, 246, 255, 0.84) 48%, rgba(255, 255, 255, 0.9) 100%);
-  border: 1px solid rgba(194, 217, 247, 0.74);
-  border-radius: 24px;
+    radial-gradient(circle at 34% 22%, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.44) 50%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(145deg, rgba(240, 247, 255, 0.98), rgba(219, 235, 255, 0.82));
+  border: 0;
+  border-radius: 19px;
   box-shadow:
-    0 14px 30px rgba(18, 94, 220, 0.09),
-    inset 0 0 18px rgba(35, 128, 255, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.96),
-    inset 0 -10px 18px rgba(42, 119, 232, 0.07);
-  overflow: hidden;
+    0 13px 26px rgba(18, 94, 220, 0.085),
+    inset 0 1px 0 rgba(255, 255, 255, 0.84),
+    inset 0 -8px 18px rgba(42, 119, 232, 0.072);
   transition:
-    transform 0.28s ease,
-    border-color 0.28s ease,
-    box-shadow 0.28s ease,
-    color 0.28s ease;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-}
-
-.advantage__icon::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 8px;
-  border-radius: 20px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0));
-  filter: blur(5px);
-  opacity: 0.86;
+    transform 0.24s ease,
+    box-shadow 0.24s ease,
+    color 0.24s ease;
 }
 
 .advantage__icon .line-icon {
@@ -96,11 +98,7 @@
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.9;
-  transform: translateY(1px);
-  filter:
-    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.8))
-    drop-shadow(0 6px 10px rgba(17, 94, 220, 0.2));
+  stroke-width: 2.05;
 }
 
 .advantage__icon .line-icon path,
@@ -111,145 +109,196 @@
 
 .advantage:hover .advantage__icon {
   color: #0059ed;
-  transform: translateZ(0) scale(1.03);
-  border-color: rgba(105, 166, 247, 0.86);
+  transform: translateY(-2px) scale(1.02);
   box-shadow:
-    0 18px 38px rgba(20, 103, 235, 0.16),
-    0 5px 14px rgba(20, 103, 235, 0.1),
-    inset 0 0 22px rgba(35, 128, 255, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.96),
-    inset 0 -10px 18px rgba(42, 119, 232, 0.08);
+    0 16px 30px rgba(18, 94, 220, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    inset 0 -8px 18px rgba(42, 119, 232, 0.07);
 }
 
 .advantage__content {
-  display: grid;
-  grid-template-rows: 2.12em auto;
-  justify-content: stretch;
-  justify-items: start;
-  align-content: center;
+  position: relative;
+  z-index: 1;
+  display: block;
   min-width: 0;
   min-height: 0;
-  height: 100%;
-  padding-top: 0;
+  height: auto;
+  padding: 0;
 }
 
-.advantage h2 {
-  display: flex;
-  align-items: flex-end;
-  min-height: 0;
-  margin: 0 0 6px;
-  color: #061334;
-  font-size: clamp(22px, 1.55vw, 28px);
-  font-weight: 830;
-  line-height: 1.03;
-  letter-spacing: -0.01em;
-  text-wrap: balance;
+.advantage__heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
 }
 
+.advantage h2,
 .advantage:last-child h2 {
-  max-width: 150px;
+  display: block;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  color: #061334;
+  font-size: clamp(27px, 1.86vw, 34px);
+  font-weight: 830;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
 }
 
 .advantage p {
-  max-width: 220px;
-  margin: 0;
-  color: #344663;
-  font-size: clamp(13.5px, 0.96vw, 15.5px);
-  line-height: 1.18;
-  text-wrap: pretty;
+  max-width: 560px;
+  margin: 9px 0 0;
+  color: #40526e;
+  font-size: clamp(15px, 1.04vw, 17px);
+  line-height: 1.3;
 }
 
-@media (min-width: 1025px) {
-  .advantages {
-    margin-top: clamp(26px, 3.4vh, 42px);
-  }
+.advantage__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  font-size: 25px;
+  line-height: 1;
+  opacity: 0.78;
+  transform: translateX(0);
+  transition:
+    opacity 0.24s ease,
+    transform 0.24s ease,
+    color 0.24s ease;
+}
+
+.advantage:hover .advantage__arrow {
+  color: #0054d9;
+  opacity: 1;
+  transform: translateX(4px);
 }
 
 @media (max-width: 1280px) {
   .advantages {
-    --adv-icon-size: 88px;
-    --adv-svg-size: 48px;
-    --adv-gap: 16px;
-    --adv-item-pad: 13px;
+    --adv-icon-size: 66px;
+    --adv-svg-size: 36px;
 
     width: min(calc(100% - 40px), 1200px);
-    padding: 16px 20px;
+    gap: 18px;
   }
 
-  .advantage__icon {
-    border-radius: 22px;
+  .advantage {
+    min-height: 132px;
+    gap: 16px;
+    padding-inline: 20px;
   }
 
-  .advantage h2 {
-    min-height: 0;
-    margin-bottom: 4px;
-    font-size: 21px;
-    line-height: 1.04;
+  .advantage h2,
+  .advantage:last-child h2 {
+    font-size: 25px;
   }
 
   .advantage p {
-    max-width: 180px;
-    font-size: 13px;
-    line-height: 1.17;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 1024px) {
   .advantages {
-    --adv-icon-size: 86px;
-    --adv-svg-size: 48px;
-    --adv-gap: 18px;
-    --adv-item-pad: 22px;
+    --adv-icon-size: 66px;
+    --adv-svg-size: 36px;
 
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     width: min(calc(100% - 32px), 940px);
     height: auto;
     min-height: 0;
     margin-top: 16px;
-    padding: 24px 28px;
-    gap: 26px 0;
+    gap: 14px;
   }
 
-  .advantage:nth-child(odd) {
-    padding-left: 0;
+  .advantages .advantage {
+    min-height: 112px;
+    padding: 18px 20px;
   }
 
-  .advantage:nth-child(even)::before {
-    display: block;
-  }
-
-  .advantage:nth-child(3)::before {
-    display: none;
+  .advantages .advantage:nth-child(odd),
+  .advantages .advantage:nth-child(even) {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
-@media (max-width: 620px) {
+@media (max-width: 560px) {
   .advantages {
-    --adv-icon-size: 76px;
-    --adv-svg-size: 42px;
-    --adv-gap: 16px;
-    --adv-item-pad: 0;
+    --adv-icon-size: 58px;
+    --adv-svg-size: 32px;
 
-    grid-template-columns: 1fr;
     width: calc(100% - 28px);
-    padding: 24px 20px;
-    border-radius: 22px;
+    max-width: calc(100% - 28px);
+    margin: 16px auto 28px;
+    gap: 12px;
   }
 
-  .advantage + .advantage::before {
-    display: none;
+  .advantages .advantage {
+    min-height: 112px;
+    gap: 14px;
+    padding: 16px 15px;
+    border-radius: 17px;
   }
 
-  .advantage__content {
-    min-height: auto;
+  .advantages .advantage:nth-child(odd),
+  .advantages .advantage:nth-child(even) {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
-  .advantage h2 {
-    min-height: auto;
+  .advantage__icon {
+    border-radius: 16px;
+  }
+
+  .advantage__heading {
+    gap: 10px;
+  }
+
+  .advantage h2,
+  .advantage:last-child h2 {
     font-size: 23px;
+    line-height: 1.08;
   }
 
   .advantage p {
-    font-size: 16px;
+    margin-top: 6px;
+    font-size: 14.5px;
+    line-height: 1.25;
+  }
+
+  .advantage__arrow {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 360px) {
+  .advantages {
+    width: calc(100% - 24px);
+    max-width: calc(100% - 24px);
+  }
+
+  .advantages .advantage {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 12px;
+    padding-inline: 12px;
+  }
+
+  .advantages .advantage:nth-child(odd),
+  .advantages .advantage:nth-child(even) {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .advantage__icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .advantage__icon .line-icon {
+    width: 29px;
+    height: 29px;
   }
 }
