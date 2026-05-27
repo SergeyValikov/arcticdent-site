@@ -331,6 +331,46 @@ html.real-mobile .header__nav::before {
   right: -13px;
 }
 
+html.real-mobile .doctors-page {
+  padding: calc(var(--header-height, 114px) + 24px) 18px 52px;
+}
+
+html.real-mobile .doctors-page__grid {
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 420px;
+}
+
+html.real-mobile .doctor-card {
+  border-radius: 19px;
+}
+
+html.real-mobile .doctor-card:hover {
+  transform: none;
+}
+
+html.real-mobile .doctor-card.is-active {
+  transform: translateY(-2px);
+}
+
+html.real-mobile .doctor-card__overlay {
+  padding: 14px;
+}
+
+html.real-mobile .doctor-card__overlay-content {
+  padding: 14px;
+  border-radius: 14px;
+}
+
+html.real-mobile .doctor-card__name {
+  font-size: 19px;
+}
+
+html.real-mobile .doctor-card__role {
+  font-size: 14px;
+}
+
 html.real-mobile .hero-section {
   width: var(--real-vw, 100vw);
   max-width: var(--real-vw, 100vw);
