@@ -350,12 +350,29 @@ html.real-mobile .doctor-card:hover {
   transform: none;
 }
 
+html.real-mobile .doctor-card:hover:not(.is-active) {
+  border-color: rgba(223, 234, 248, 0.7);
+  box-shadow:
+    0 22px 54px rgba(18, 61, 117, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+}
+
 html.real-mobile .doctor-card.is-active {
   transform: translateY(-2px);
 }
 
+html.real-mobile .doctor-card:hover:not(.is-active) .doctor-card__sprite {
+  transform: scale(1.002);
+}
+
 html.real-mobile .doctor-card__overlay {
   padding: 14px;
+}
+
+html.real-mobile .doctor-card:hover:not(.is-active) .doctor-card__overlay,
+html.real-mobile .doctor-card:focus-visible:not(.is-active) .doctor-card__overlay {
+  opacity: 0;
+  transform: translateY(8px);
 }
 
 html.real-mobile .doctor-card__overlay-content {
