@@ -79,16 +79,12 @@ export default function Header() {
             <button
               className="header__message-toggle"
               type="button"
+              aria-label="Мессенджеры"
               aria-expanded={isMessengerOpen}
               aria-controls="mobile-messenger-popover"
-              onClick={() => setIsMessengerOpen(true)}
+              onClick={() => setIsMessengerOpen((isOpen) => !isOpen)}
             >
-              <svg viewBox="0 0 56 56" aria-hidden="true" focusable="false">
-                <path d="M13.8 15.5c3.3-4 8.5-6.5 14.2-6.5 10 0 18.1 7.3 18.1 16.4S38 41.8 28 41.8c-2.5 0-4.9-.46-7.05-1.3L11 45l2.3-9.1c-2.15-2.85-3.4-6.48-3.4-10.5 0-3.7 1.4-7.16 3.9-9.9Z" />
-                <path d="M20.5 25.4h15" />
-                <path d="M20.5 31h9.2" />
-              </svg>
-              <span>Написать</span>
+              <span>Мессенджеры</span>
             </button>
 
             <div
