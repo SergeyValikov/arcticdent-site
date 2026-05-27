@@ -116,6 +116,9 @@ html.real-mobile .header {
   gap: 8px 8px;
   padding: 12px 13px;
   border-radius: 0 0 22px 22px;
+  box-shadow:
+    0 20px 58px rgba(16, 54, 105, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
 }
 
 html.real-mobile .header__logo {
@@ -327,8 +330,8 @@ html.real-mobile .header__nav {
 }
 
 html.real-mobile .header__nav::before {
-  left: -13px;
-  right: -13px;
+  left: 0;
+  right: 0;
 }
 
 html.real-mobile .doctors-page {
@@ -627,8 +630,8 @@ html.real-mobile .advantage p {
   }
 
   html.real-mobile .header__nav::before {
-    left: -12px;
-    right: -12px;
+    left: 0;
+    right: 0;
   }
 
   html.real-mobile .advantages {
