@@ -1,5 +1,9 @@
+import { useRef } from 'react'
+
 const SOURCE_WIDTH = 1448
 const SOURCE_HEIGHT = 1086
+const TAP_MOVE_TOLERANCE = 10
+const TAP_MAX_DURATION = 700
 
 function getCropStyles(crop) {
   const xPosition = (crop.x / (100 - crop.width)) * 100
@@ -17,13 +21,43 @@ function getCropStyles(crop) {
 }
 
 export default function DoctorCard({ doctor, isActive, onToggle }) {
+  const tapStartRef = useRef(null)
+
   const handlePointerDown = (event) => {
     if (event.pointerType === 'mouse' && event.button !== 0) {
+      tapStartRef.current = null
       return
     }
 
-    event.preventDefault()
-    onToggle()
+    tapStartRef.current = {
+      x: event.clientX,
+      y: event.clientY,
+      scrollY: window.scrollY,
+      time: performance.now(),
+    }
+  }
+
+  const handlePointerUp = (event) => {
+    const tapStart = tapStartRef.current
+    tapStartRef.current = null
+
+    if (!tapStart) {
+      return
+    }
+
+    const deltaX = Math.abs(event.clientX - tapStart.x)
+    const deltaY = Math.abs(event.clientY - tapStart.y)
+    const scrollDelta = Math.abs(window.scrollY - tapStart.scrollY)
+    const elapsed = performance.now() - tapStart.time
+
+    if (deltaX <= TAP_MOVE_TOLERANCE && deltaY <= TAP_MOVE_TOLERANCE && scrollDelta <= TAP_MOVE_TOLERANCE && elapsed <= TAP_MAX_DURATION) {
+      event.preventDefault()
+      onToggle()
+    }
+  }
+
+  const handlePointerCancel = () => {
+    tapStartRef.current = null
   }
 
   const handleKeyDown = (event) => {
@@ -42,6 +76,9 @@ export default function DoctorCard({ doctor, isActive, onToggle }) {
       aria-label={`${doctor.name}. ${doctor.role}`}
       aria-pressed={isActive}
       onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerCancel}
+      onPointerLeave={handlePointerCancel}
       onKeyDown={handleKeyDown}
     >
       <div className="doctor-card__sprite" aria-hidden="true" />
