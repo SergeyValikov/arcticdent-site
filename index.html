@@ -7,6 +7,7 @@
     <script>
       ;(function () {
         var root = document.documentElement
+        var stableViewportWidth = null
 
         function setMobileViewportState() {
           var viewport = document.querySelector('meta[name="viewport"]')
@@ -16,14 +17,15 @@
 
           var isTouch = navigator.maxTouchPoints > 0 || 'ontouchstart' in window
           var screenWidth = Math.min(screen.width || 9999, screen.height || 9999)
-          var liveViewport =
-            window.visualViewport && window.visualViewport.width
-              ? window.visualViewport.width
-              : window.innerWidth || screenWidth
-          var viewportWidth = Math.min(
-            screenWidth,
-            liveViewport
-          )
+          var layoutViewport = window.innerWidth || root.clientWidth || screenWidth
+          var isPinchZoom = window.visualViewport && window.visualViewport.scale && window.visualViewport.scale > 1.01
+          var viewportWidth = Math.min(screenWidth, layoutViewport)
+
+          if (isPinchZoom && stableViewportWidth) {
+            viewportWidth = stableViewportWidth
+          } else {
+            stableViewportWidth = viewportWidth
+          }
 
           root.style.setProperty('--real-vw', Math.round(viewportWidth) + 'px')
           root.classList.toggle('real-mobile', isTouch && viewportWidth <= 560)
