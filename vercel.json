@@ -1,4 +1,10 @@
 {
+  "rewrites": [
+    {
+      "source": "/doctors",
+      "destination": "/"
+    }
+  ],
   "headers": [
     {
       "source": "/",

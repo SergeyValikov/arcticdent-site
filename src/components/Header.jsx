@@ -1,8 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import './Header.css'
 
-const navItems = ['Врачи', 'Услуги', 'Цены', 'Документы']
+const navItems = [
+  { label: 'Врачи', to: '/doctors' },
+  { label: 'Услуги', to: '/#услуги' },
+  { label: 'Цены', to: '/#цены' },
+  { label: 'Документы', to: '/#документы' },
+]
 const messengerItems = [
   { id: 'vk', label: 'ВКонтакте', href: '#vk' },
   { id: 'max', label: 'MAX', href: '#max' },
@@ -61,15 +67,15 @@ export default function Header() {
 
   return (
     <header className="header">
-      <a className="header__logo" href="/" aria-label="Арктик Дент">
+      <Link className="header__logo" to="/" aria-label="Арктик Дент">
         <img src="/assets/logo-header.png" alt="Арктик Дент" />
-      </a>
+      </Link>
 
       <nav className="header__nav" aria-label="Основная навигация">
         {navItems.map((item) => (
-          <a href={`#${item.toLowerCase().replaceAll(' ', '-')}`} key={item}>
-            {item}
-          </a>
+          <Link to={item.to} key={item.label}>
+            {item.label}
+          </Link>
         ))}
       </nav>
 

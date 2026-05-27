@@ -1,0 +1,185 @@
+.doctors-page {
+  min-height: 100vh;
+  padding: calc(var(--header-height, 96px) + clamp(34px, 5.8vh, 72px)) clamp(24px, 4vw, 64px) clamp(52px, 7vh, 92px);
+  background:
+    radial-gradient(circle at 88% 20%, rgba(197, 224, 255, 0.55) 0%, rgba(197, 224, 255, 0.18) 26%, rgba(197, 224, 255, 0) 54%),
+    radial-gradient(circle at 7% 76%, rgba(214, 232, 255, 0.44) 0%, rgba(214, 232, 255, 0.15) 28%, rgba(214, 232, 255, 0) 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(244, 249, 255, 0.98) 100%);
+}
+
+.doctors-page__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(18px, 2.05vw, 28px);
+  width: min(100%, 1320px);
+  margin: 0 auto;
+}
+
+.doctor-card {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  min-width: 0;
+  padding: 0;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 252, 255, 0.9) 100%),
+    #ffffff;
+  border: 1px solid rgba(223, 234, 248, 0.7);
+  border-radius: 21px;
+  box-shadow:
+    0 22px 54px rgba(18, 61, 117, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+  overflow: hidden;
+  cursor: pointer;
+  transform: translateY(0);
+  transition:
+    transform 0.26s ease,
+    border-color 0.26s ease,
+    box-shadow 0.26s ease;
+}
+
+.doctor-card:hover,
+.doctor-card:focus-visible,
+.doctor-card.is-active {
+  border-color: rgba(174, 208, 252, 0.8);
+  box-shadow:
+    0 28px 64px rgba(18, 61, 117, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.96);
+  transform: translateY(-4px);
+  outline: none;
+}
+
+.doctor-card__sprite {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: var(--doctor-card-ratio);
+  background-image: url("/images/doctors-page.png");
+  background-repeat: no-repeat;
+  background-size: var(--doctor-bg-size-x) var(--doctor-bg-size-y);
+  background-position: var(--doctor-bg-x) var(--doctor-bg-y);
+  transform: scale(1.002);
+  transform-origin: center;
+  transition: transform 0.36s ease;
+}
+
+.doctor-card:hover .doctor-card__sprite,
+.doctor-card:focus-visible .doctor-card__sprite,
+.doctor-card.is-active .doctor-card__sprite {
+  transform: scale(1.025);
+}
+
+.doctor-card__overlay {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(16px, 1.5vw, 22px);
+  color: #061334;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(246, 250, 255, 0.36) 42%, rgba(235, 245, 255, 0.9) 100%),
+    rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition:
+    opacity 0.24s ease,
+    transform 0.28s ease;
+}
+
+.doctor-card:hover .doctor-card__overlay,
+.doctor-card:focus-visible .doctor-card__overlay,
+.doctor-card.is-active .doctor-card__overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.doctor-card__overlay-content {
+  width: 100%;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(221, 234, 251, 0.72);
+  border-radius: 15px;
+  box-shadow:
+    0 16px 34px rgba(15, 77, 160, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px) saturate(1.08);
+  -webkit-backdrop-filter: blur(12px) saturate(1.08);
+}
+
+.doctor-card__name {
+  margin: 0;
+  color: #061334;
+  font-size: clamp(17px, 1.32vw, 21px);
+  font-weight: 780;
+  line-height: 1.12;
+}
+
+.doctor-card__role {
+  margin: 7px 0 0;
+  color: var(--blue);
+  font-size: clamp(13px, 0.96vw, 15px);
+  font-weight: 620;
+  line-height: 1.25;
+}
+
+.doctor-card__description {
+  margin: 12px 0 0;
+  color: #40526e;
+  font-size: clamp(13px, 0.92vw, 14px);
+  line-height: 1.38;
+}
+
+@media (max-width: 1024px) {
+  .doctors-page {
+    padding: calc(var(--header-height, 126px) + 34px) 22px 64px;
+  }
+
+  .doctors-page__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 760px;
+    gap: 22px;
+  }
+}
+
+@media (max-width: 560px) {
+  .doctors-page {
+    padding: calc(var(--header-height, 114px) + 24px) 18px 52px;
+  }
+
+  .doctors-page__grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    gap: 20px;
+  }
+
+  .doctor-card {
+    border-radius: 19px;
+  }
+
+  .doctor-card:hover {
+    transform: none;
+  }
+
+  .doctor-card.is-active {
+    transform: translateY(-2px);
+  }
+
+  .doctor-card__overlay {
+    padding: 14px;
+  }
+
+  .doctor-card__overlay-content {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .doctor-card__name {
+    font-size: 19px;
+  }
+
+  .doctor-card__role {
+    font-size: 14px;
+  }
+}
