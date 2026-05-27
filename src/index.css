@@ -332,7 +332,7 @@ html.real-mobile .header__nav::before {
 }
 
 html.real-mobile .doctors-page {
-  padding: calc(var(--header-height, 114px) + 24px) 18px 52px;
+  padding: calc(var(--header-height, 114px) + 28px) 18px 52px;
 }
 
 html.real-mobile .doctors-page__grid {

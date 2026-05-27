@@ -1,4 +1,5 @@
 import './App.css'
+import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 
 import Header from './components/Header.jsx'
@@ -15,12 +16,23 @@ function HomePage() {
   )
 }
 
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
+
 function AppLayout() {
   const location = useLocation()
 
   return (
     <div className="site-shell">
       <Header />
+      <ScrollToTop />
       <main className="site-main">
         <div className="page-transition" key={location.pathname}>
           <Routes location={location}>
