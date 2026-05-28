@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import './Header.css'
@@ -37,7 +37,36 @@ function MessengerIcon({ id }) {
 
 export default function Header() {
   const [isMessengerOpen, setIsMessengerOpen] = useState(false)
+  const headerRef = useRef(null)
   const messengerRef = useRef(null)
+
+  useLayoutEffect(() => {
+    const root = document.documentElement
+
+    const updateHeaderHeight = () => {
+      const height = headerRef.current?.getBoundingClientRect().height
+
+      if (height) {
+        root.style.setProperty('--actual-header-height', `${Math.ceil(height)}px`)
+      }
+    }
+
+    updateHeaderHeight()
+
+    const observer = typeof ResizeObserver !== 'undefined' && headerRef.current
+      ? new ResizeObserver(updateHeaderHeight)
+      : null
+
+    observer?.observe(headerRef.current)
+    window.addEventListener('resize', updateHeaderHeight, { passive: true })
+    window.visualViewport?.addEventListener('resize', updateHeaderHeight, { passive: true })
+
+    return () => {
+      observer?.disconnect()
+      window.removeEventListener('resize', updateHeaderHeight)
+      window.visualViewport?.removeEventListener('resize', updateHeaderHeight)
+    }
+  }, [])
 
   useEffect(() => {
     if (!isMessengerOpen) {
@@ -66,7 +95,7 @@ export default function Header() {
   }, [isMessengerOpen])
 
   return (
-    <header className="header">
+    <header className="header" ref={headerRef}>
       <Link className="header__logo" to="/" aria-label="Арктик Дент">
         <img src="/assets/logo-header.png" alt="Арктик Дент" />
       </Link>

@@ -133,7 +133,7 @@
 
 @media (max-width: 1024px) {
   .doctors-page {
-    padding: calc(clamp(136px, 17.5vw, 175px) + 22px) 22px 64px;
+    padding: calc(var(--actual-header-height, clamp(136px, 17.5vw, 175px)) + 22px) 22px 64px;
   }
 
   .doctors-page__grid {
@@ -145,7 +145,7 @@
 
 @media (max-width: 560px) {
   .doctors-page {
-    padding: calc(var(--header-height, 114px) + 28px) 18px 52px;
+    padding: calc(var(--actual-header-height, var(--header-height, 114px)) + 28px) 18px 52px;
   }
 
   .doctors-page__grid {
