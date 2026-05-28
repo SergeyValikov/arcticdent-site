@@ -18,9 +18,22 @@
 
 .page-transition {
   min-height: 100vh;
-  animation: page-reveal 0.58s cubic-bezier(0.2, 0.82, 0.2, 1) both;
   transform-origin: 50% 12%;
   will-change: opacity, transform, filter;
+}
+
+.page-transition.is-entering {
+  animation: page-reveal 0.58s cubic-bezier(0.2, 0.82, 0.2, 1) both;
+}
+
+.page-transition.is-leaving {
+  animation: page-leave 0.18s ease both;
+}
+
+.page-transition.is-idle {
+  opacity: 1;
+  filter: none;
+  transform: none;
 }
 
 @keyframes page-reveal {
@@ -41,12 +54,26 @@
   }
 }
 
+@keyframes page-leave {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+    transform: perspective(1400px) rotateX(0) translateY(0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: perspective(1400px) rotateX(-2deg) translateY(-16px) scale(0.992);
+  }
+}
+
 @media (max-width: 1024px) {
   .site-shell {
     --header-height: clamp(118px, 12.2vw, 136px);
   }
 
-  .page-transition {
+  .page-transition.is-entering {
     animation-duration: 0.46s;
   }
 }
@@ -56,9 +83,13 @@
     --header-height: 114px;
   }
 
-  .page-transition {
+  .page-transition.is-entering {
     animation: page-reveal-mobile 0.56s cubic-bezier(0.18, 0.86, 0.22, 1) both;
     transform-origin: 50% 0;
+  }
+
+  .page-transition.is-leaving {
+    animation: page-leave-mobile 0.18s ease both;
   }
 }
 
@@ -80,12 +111,54 @@
   }
 }
 
-html.real-mobile .page-transition {
+@keyframes page-leave-mobile {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translate3d(0, -10px, 0) scale(0.994);
+  }
+}
+
+html.real-mobile .page-transition.is-entering {
   animation: page-reveal-mobile 0.56s cubic-bezier(0.18, 0.86, 0.22, 1) both;
 }
 
+html.real-mobile .page-transition.is-leaving {
+  animation: page-leave-mobile 0.18s ease both;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .page-transition {
-    animation: none;
+  .page-transition.is-entering {
+    animation: page-fade-in 0.18s ease both;
+  }
+
+  .page-transition.is-leaving {
+    animation: page-fade-out 0.12s ease both;
+  }
+}
+
+@keyframes page-fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes page-fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
