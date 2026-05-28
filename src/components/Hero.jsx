@@ -58,14 +58,6 @@ export default function Hero() {
             <img className="hero-photo__image" src="/assets/hero-clean.png" alt="" />
           </div>
         </div>
-
-        <aside className="consult-card">
-          <div className="consult-card__image-frame" aria-hidden="true">
-            <img className="consult-card__image" src="/assets/question-card.png" alt="" />
-            <span className="consult-card__cta-glow" />
-          </div>
-          <a className="consult-card__cta-hotspot" href="#free-consultation" aria-label="Задать вопрос" />
-        </aside>
       </div>
     </section>
   )
