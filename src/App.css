@@ -57,20 +57,31 @@
   }
 
   .page-transition {
-    animation-name: page-reveal-mobile;
+    animation: page-reveal-mobile 0.56s cubic-bezier(0.18, 0.86, 0.22, 1) both;
+    transform-origin: 50% 0;
   }
 }
 
 @keyframes page-reveal-mobile {
   0% {
     opacity: 0;
-    transform: translateY(18px);
+    filter: blur(7px);
+    transform: translate3d(0, 28px, 0) scale(0.982);
+  }
+
+  48% {
+    opacity: 1;
   }
 
   100% {
     opacity: 1;
-    transform: translateY(0);
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1);
   }
+}
+
+html.real-mobile .page-transition {
+  animation: page-reveal-mobile 0.56s cubic-bezier(0.18, 0.86, 0.22, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
