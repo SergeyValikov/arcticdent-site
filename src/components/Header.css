@@ -321,8 +321,7 @@
     border-color: rgba(255, 255, 255, 0.56);
     box-shadow:
       0 20px 58px rgba(16, 54, 105, 0.07),
-      inset 0 1px 0 rgba(255, 255, 255, 0.82),
-      inset 0 -1px 0 rgba(211, 226, 247, 0.36);
+      inset 0 1px 0 rgba(255, 255, 255, 0.82);
     backdrop-filter: blur(22px) saturate(1.3);
     -webkit-backdrop-filter: blur(22px) saturate(1.3);
   }
@@ -357,8 +356,8 @@
     content: "";
     position: absolute;
     top: 0;
-    left: calc(-1 * var(--header-pad-x));
-    right: calc(-1 * var(--header-pad-x));
+    left: 0;
+    right: 0;
     height: 1px;
     background: linear-gradient(90deg, rgba(210, 226, 247, 0) 0%, rgba(196, 214, 238, 0.62) 16%, rgba(196, 214, 238, 0.62) 84%, rgba(210, 226, 247, 0) 100%);
   }
