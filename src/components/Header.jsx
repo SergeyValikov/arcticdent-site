@@ -5,7 +5,7 @@ import './Header.css'
 
 const navItems = [
   { label: 'Врачи', to: '/doctors' },
-  { label: 'Услуги', to: '/#услуги' },
+  { label: 'Услуги', to: '/services' },
   { label: 'Цены', to: '/#цены' },
   { label: 'Документы', to: '/#документы' },
 ]

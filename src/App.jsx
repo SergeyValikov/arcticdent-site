@@ -6,6 +6,7 @@ import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import Advantages from './components/Advantages.jsx'
 import DoctorsPage from './pages/DoctorsPage.jsx'
+import ServicesPage from './pages/ServicesPage.jsx'
 
 function HomePage() {
   return (
@@ -74,6 +75,7 @@ function AppLayout() {
           <Routes location={displayLocation}>
             <Route path="/" element={<HomePage />} />
             <Route path="/doctors" element={<DoctorsPage />} />
+            <Route path="/services" element={<ServicesPage />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
         </div>
