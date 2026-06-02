@@ -2,31 +2,37 @@ export const services = [
   {
     id: 'orthopedia',
     title: 'Ортопедия / имплантация / протезирование',
-    image: '/images/services/orthopedia.png',
+    desktopImage: '/images/services/orthopedia.png',
+    mobileImage: '/images/services/mobile/orthopedia-mobile.png',
   },
   {
     id: 'kids-dentistry',
     title: 'Детская стоматология',
-    image: '/images/services/kids-dentistry.png',
+    desktopImage: '/images/services/kids-dentistry.png',
+    mobileImage: '/images/services/mobile/kids-dentistry-mobile.png',
   },
   {
     id: 'microsurgery',
     title: 'Микрохирургия',
-    image: '/images/services/microsurgery.png',
+    desktopImage: '/images/services/microsurgery.png',
+    mobileImage: '/images/services/mobile/microsurgery-mobile.png',
   },
   {
     id: 'sedation',
     title: 'Наркоз и седация',
-    image: '/images/services/sedation.png',
+    desktopImage: '/images/services/sedation.png',
+    mobileImage: '/images/services/mobile/sedation-mobile.png',
   },
   {
     id: 'cleaning',
     title: 'Профессиональная чистка зубов',
-    image: '/images/services/cleaning.png',
+    desktopImage: '/images/services/cleaning.png',
+    mobileImage: '/images/services/mobile/cleaning-mobile.png',
   },
   {
     id: 'orthodontics',
     title: 'Ортодонтия',
-    image: '/images/services/orthodontics.png',
+    desktopImage: '/images/services/orthodontics.png',
+    mobileImage: '/images/services/mobile/orthodontics-mobile.png',
   },
 ]
