@@ -7,11 +7,24 @@ const AUTOPLAY_DELAY = 5200
 const SWIPE_THRESHOLD = 42
 const SWIPE_AXIS_RATIO = 1.18
 
+const shouldUseMobileServiceImage = () => {
+  if (typeof window === 'undefined') {
+    return false
+  }
+
+  return (
+    document.documentElement.classList.contains('real-mobile') ||
+    window.matchMedia('(max-width: 560px)').matches ||
+    window.matchMedia('(hover: none) and (pointer: coarse)').matches
+  )
+}
+
 export default function ServicesPage() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [direction, setDirection] = useState('next')
   const [isAutoplayStopped, setIsAutoplayStopped] = useState(false)
   const [isSwipeHintDismissed, setIsSwipeHintDismissed] = useState(false)
+  const [usesMobileServiceImage, setUsesMobileServiceImage] = useState(shouldUseMobileServiceImage)
   const autoplayRef = useRef(null)
   const touchStartRef = useRef(null)
   const mouseSwipeStartRef = useRef(null)
@@ -141,7 +154,48 @@ export default function ServicesPage() {
     }
   }, [isAutoplayStopped])
 
+  useEffect(() => {
+    const mobileQuery = window.matchMedia('(max-width: 560px)')
+    const touchQuery = window.matchMedia('(hover: none) and (pointer: coarse)')
+
+    const updateServiceImageMode = () => {
+      setUsesMobileServiceImage(shouldUseMobileServiceImage())
+    }
+
+    updateServiceImageMode()
+
+    mobileQuery.addEventListener?.('change', updateServiceImageMode)
+    touchQuery.addEventListener?.('change', updateServiceImageMode)
+    window.addEventListener('resize', updateServiceImageMode, { passive: true })
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', updateServiceImageMode, { passive: true })
+    }
+
+    return () => {
+      mobileQuery.removeEventListener?.('change', updateServiceImageMode)
+      touchQuery.removeEventListener?.('change', updateServiceImageMode)
+      window.removeEventListener('resize', updateServiceImageMode)
+
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('resize', updateServiceImageMode)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    const imagesToPreload = services.map((service) => (
+      usesMobileServiceImage ? service.mobileImage : service.desktopImage
+    ))
+
+    imagesToPreload.forEach((src) => {
+      const image = new Image()
+      image.src = src
+    })
+  }, [usesMobileServiceImage])
+
   const activeService = services[activeIndex]
+  const activeServiceImage = usesMobileServiceImage ? activeService.mobileImage : activeService.desktopImage
 
   return (
     <section className="services-page" aria-labelledby="services-page-title">
@@ -158,13 +212,14 @@ export default function ServicesPage() {
           onPointerUp={handleMouseSwipeEnd}
           onPointerCancel={handleMouseSwipeCancel}
         >
-          <picture className="services-slider__picture" key={activeService.id}>
-            <source media="(max-width: 560px)" srcSet={activeService.mobileImage} />
+          <picture className="services-slider__picture" key={`${activeService.id}-${usesMobileServiceImage ? 'mobile' : 'desktop'}`}>
             <img
               className="services-slider__image"
-              src={activeService.desktopImage}
+              src={activeServiceImage}
               alt={activeService.title}
+              decoding="async"
               draggable="false"
+              fetchPriority={activeIndex === 0 ? 'high' : 'auto'}
             />
           </picture>
 
