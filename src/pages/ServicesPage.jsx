@@ -24,6 +24,7 @@ export default function ServicesPage() {
   const [direction, setDirection] = useState('next')
   const [isAutoplayStopped, setIsAutoplayStopped] = useState(false)
   const [isSwipeHintDismissed, setIsSwipeHintDismissed] = useState(false)
+  const [isCtaNudging, setIsCtaNudging] = useState(false)
   const [usesMobileServiceImage, setUsesMobileServiceImage] = useState(shouldUseMobileServiceImage)
   const autoplayRef = useRef(null)
   const touchStartRef = useRef(null)
@@ -55,7 +56,10 @@ export default function ServicesPage() {
       return
     }
 
-    setIsSwipeHintDismissed(true)
+    if (!isSwipeHintDismissed) {
+      setIsSwipeHintDismissed(true)
+      setIsCtaNudging(true)
+    }
 
     if (deltaX < 0) {
       goToSlide(activeIndex + 1, 'next', true)
@@ -223,7 +227,7 @@ export default function ServicesPage() {
             />
           </picture>
 
-          <a className="button button--primary services-slider__cta" href="#appointment">
+          <a className="button button--primary services-slider__cta services-slider__cta--desktop" href="#appointment">
             <strong>
               Записаться
               <br />
@@ -271,6 +275,24 @@ export default function ServicesPage() {
             />
           ))}
         </div>
+
+        <a
+          className="button button--primary services-slider__cta services-slider__cta--mobile"
+          href="#appointment"
+          data-nudge={isCtaNudging}
+          onAnimationEnd={(event) => {
+            if (event.animationName === 'service-cta-nudge') {
+              setIsCtaNudging(false)
+            }
+          }}
+        >
+          <strong>
+            Записаться
+            <br />
+            на консультацию
+          </strong>
+          <span aria-hidden="true">→</span>
+        </a>
       </div>
     </section>
   )
