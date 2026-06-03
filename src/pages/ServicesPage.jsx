@@ -27,8 +27,30 @@ export default function ServicesPage() {
   const [isCtaNudging, setIsCtaNudging] = useState(false)
   const [usesMobileServiceImage, setUsesMobileServiceImage] = useState(shouldUseMobileServiceImage)
   const autoplayRef = useRef(null)
+  const ctaNudgeTimeoutRef = useRef(null)
+  const hasShownCtaNudgeRef = useRef(false)
   const touchStartRef = useRef(null)
   const mouseSwipeStartRef = useRef(null)
+
+  const showFirstInteractionHint = () => {
+    setIsSwipeHintDismissed(true)
+
+    if (hasShownCtaNudgeRef.current) {
+      return
+    }
+
+    hasShownCtaNudgeRef.current = true
+    window.clearTimeout(ctaNudgeTimeoutRef.current)
+    setIsCtaNudging(false)
+
+    window.requestAnimationFrame(() => {
+      setIsCtaNudging(true)
+
+      ctaNudgeTimeoutRef.current = window.setTimeout(() => {
+        setIsCtaNudging(false)
+      }, 2100)
+    })
+  }
 
   const goToSlide = (nextIndex, nextDirection, isManual = false) => {
     setDirection(nextDirection)
@@ -44,10 +66,12 @@ export default function ServicesPage() {
   }
 
   const showPrevious = () => {
+    showFirstInteractionHint()
     goToSlide(activeIndex - 1, 'prev', true)
   }
 
   const showNext = () => {
+    showFirstInteractionHint()
     goToSlide(activeIndex + 1, 'next', true)
   }
 
@@ -56,10 +80,7 @@ export default function ServicesPage() {
       return
     }
 
-    if (!isSwipeHintDismissed) {
-      setIsSwipeHintDismissed(true)
-      setIsCtaNudging(true)
-    }
+    showFirstInteractionHint()
 
     if (deltaX < 0) {
       goToSlide(activeIndex + 1, 'next', true)
@@ -157,6 +178,10 @@ export default function ServicesPage() {
       window.clearInterval(autoplayRef.current)
     }
   }, [isAutoplayStopped])
+
+  useEffect(() => () => {
+    window.clearTimeout(ctaNudgeTimeoutRef.current)
+  }, [])
 
   useEffect(() => {
     const mobileQuery = window.matchMedia('(max-width: 560px)')
@@ -280,11 +305,6 @@ export default function ServicesPage() {
           className="button button--primary services-slider__cta services-slider__cta--mobile"
           href="#appointment"
           data-nudge={isCtaNudging}
-          onAnimationEnd={(event) => {
-            if (event.animationName === 'service-cta-nudge') {
-              setIsCtaNudging(false)
-            }
-          }}
         >
           <strong>
             Записаться
