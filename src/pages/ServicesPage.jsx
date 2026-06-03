@@ -243,6 +243,14 @@ export default function ServicesPage() {
         >
           <picture className="services-slider__picture" key={`${activeService.id}-${usesMobileServiceImage ? 'mobile' : 'desktop'}`}>
             <img
+              className="services-slider__image-blur"
+              src={activeServiceImage}
+              alt=""
+              aria-hidden="true"
+              decoding="async"
+              draggable="false"
+            />
+            <img
               className="services-slider__image"
               src={activeServiceImage}
               alt={activeService.title}
