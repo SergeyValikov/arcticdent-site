@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/doctors",
-      "destination": "/"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
