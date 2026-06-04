@@ -7,6 +7,7 @@ import Hero from './components/Hero.jsx'
 import Advantages from './components/Advantages.jsx'
 import ContactsPage from './pages/ContactsPage.jsx'
 import DoctorsPage from './pages/DoctorsPage.jsx'
+import PlaceholderPage from './pages/PlaceholderPage.jsx'
 import ServicesPage from './pages/ServicesPage.jsx'
 
 function HomePage() {
@@ -78,6 +79,9 @@ function AppLayout() {
             <Route path="/doctors" element={<DoctorsPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/contacts" element={<ContactsPage />} />
+            <Route path="/prices" element={<PlaceholderPage sectionTitle="Цены" />} />
+            <Route path="/documents" element={<PlaceholderPage sectionTitle="Документы" />} />
+            <Route path="/about" element={<PlaceholderPage sectionTitle="О клинике" />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
         </div>

@@ -5,7 +5,7 @@ import Icon from './Icon'
 
 const advantages = [
   {
-    href: '#о-клинике',
+    to: '/about',
     icon: 'infoCircle',
     title: 'О клинике',
     text: 'Оборудование, подход и стандарты лечения',

@@ -1,13 +1,13 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import './Header.css'
 
 const navItems = [
   { label: 'Врачи', to: '/doctors' },
   { label: 'Услуги', to: '/services' },
-  { label: 'Цены', to: '/#цены' },
-  { label: 'Документы', to: '/#документы' },
+  { label: 'Цены', to: '/prices' },
+  { label: 'Документы', to: '/documents' },
 ]
 const messengerItems = [
   { id: 'vk', label: 'ВКонтакте', href: '#vk' },
@@ -39,6 +39,8 @@ export default function Header() {
   const [isMessengerOpen, setIsMessengerOpen] = useState(false)
   const headerRef = useRef(null)
   const messengerRef = useRef(null)
+  const location = useLocation()
+  const currentPath = location.pathname.replace(/\/+$/, '') || '/'
 
   useLayoutEffect(() => {
     const root = document.documentElement
@@ -101,11 +103,21 @@ export default function Header() {
       </Link>
 
       <nav className="header__nav" aria-label="Основная навигация">
-        {navItems.map((item) => (
-          <Link to={item.to} key={item.label}>
-            {item.label}
-          </Link>
-        ))}
+        {navItems.map((item) => {
+          const itemPath = item.to.replace(/\/+$/, '') || '/'
+          const isActive = currentPath === itemPath
+
+          return (
+            <Link
+              className={isActive ? 'is-active' : undefined}
+              to={item.to}
+              key={item.label}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {item.label}
+            </Link>
+          )
+        })}
       </nav>
 
       <div className="header__actions">

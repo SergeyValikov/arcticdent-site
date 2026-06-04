@@ -207,11 +207,13 @@
 }
 
 .header__nav a:hover,
+.header__nav a.is-active,
 .header__social-link:hover {
   color: var(--blue);
 }
 
-.header__nav a:hover::after {
+.header__nav a:hover::after,
+.header__nav a.is-active::after {
   left: 0;
   right: 0;
   opacity: 1;
