@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import './Advantages.css'
 import Icon from './Icon'
 
@@ -9,32 +11,48 @@ const advantages = [
     text: 'Оборудование, подход и стандарты лечения',
   },
   {
-    href: '#контакты',
+    to: '/contacts',
     icon: 'mapPin',
     title: 'Контакты',
-    text: 'Адрес, телефон и как добраться',
+    text: 'Адреса, телефоны и как добраться',
   },
 ]
 
 export default function Advantages() {
   return (
     <section className="advantages" aria-label="Навигация по клинике">
-      {advantages.map((item) => (
-        <a className="advantage" href={item.href} key={item.title}>
-          <span className="advantage__icon">
-            <Icon name={item.icon} />
-          </span>
-          <div className="advantage__content">
-            <div className="advantage__heading">
-              <h2>{item.title}</h2>
-              <span className="advantage__arrow" aria-hidden="true">
-                →
-              </span>
+      {advantages.map((item) => {
+        const content = (
+          <>
+            <span className="advantage__icon">
+              <Icon name={item.icon} />
+            </span>
+            <div className="advantage__content">
+              <div className="advantage__heading">
+                <h2>{item.title}</h2>
+                <span className="advantage__arrow" aria-hidden="true">
+                  →
+                </span>
+              </div>
+              <p>{item.text}</p>
             </div>
-            <p>{item.text}</p>
-          </div>
-        </a>
-      ))}
+          </>
+        )
+
+        if (item.to) {
+          return (
+            <Link className="advantage" to={item.to} key={item.title}>
+              {content}
+            </Link>
+          )
+        }
+
+        return (
+          <a className="advantage" href={item.href} key={item.title}>
+            {content}
+          </a>
+        )
+      })}
     </section>
   )
 }
