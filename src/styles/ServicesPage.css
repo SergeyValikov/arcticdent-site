@@ -708,13 +708,8 @@
   }
 
   .services-slider__cta--mobile[data-nudge="true"] {
-    position: fixed;
-    bottom: max(132px, calc(env(safe-area-inset-bottom, 0px) + 112px));
-    left: 50%;
-    z-index: 90;
-    width: min(calc(var(--real-vw, 100vw) - 28px), 390px);
-    margin: 0;
-    animation: service-cta-viewport-nudge 2s cubic-bezier(0.18, 0.88, 0.25, 1) both;
+    animation: service-cta-real-nudge 2s cubic-bezier(0.18, 0.88, 0.25, 1) both;
+    will-change: transform;
   }
 }
 
@@ -775,13 +770,8 @@
 }
 
 .real-mobile .services-slider__cta--mobile[data-nudge="true"] {
-  position: fixed;
-  bottom: max(132px, calc(env(safe-area-inset-bottom, 0px) + 112px));
-  left: 50%;
-  z-index: 90;
-  width: min(calc(var(--real-vw, 100vw) - 28px), 390px);
-  margin: 0;
-  animation: service-cta-viewport-nudge 2s cubic-bezier(0.18, 0.88, 0.25, 1) both;
+  animation: service-cta-real-nudge 2s cubic-bezier(0.18, 0.88, 0.25, 1) both;
+  will-change: transform;
 }
 
 @keyframes service-hand-swipe {
@@ -810,36 +800,32 @@
   }
 }
 
-@keyframes service-cta-viewport-nudge {
+@keyframes service-cta-real-nudge {
   0% {
-    opacity: 0;
-    transform: translate3d(-50%, 126%, 0) scale(0.985);
+    transform: translate3d(0, 0, 0) scale(1);
     box-shadow:
-      0 20px 44px rgba(3, 82, 209, 0.18),
+      0 20px 44px rgba(3, 82, 209, 0.24),
       inset 0 1px 0 rgba(255, 255, 255, 0.24);
   }
 
   28% {
-    opacity: 1;
-    transform: translate3d(-50%, -10px, 0) scale(1);
+    transform: translate3d(0, -116px, 0) scale(1.01);
     box-shadow:
       0 34px 70px rgba(3, 82, 209, 0.33),
       inset 0 1px 0 rgba(255, 255, 255, 0.28);
   }
 
   68% {
-    opacity: 1;
-    transform: translate3d(-50%, -10px, 0) scale(1);
+    transform: translate3d(0, -116px, 0) scale(1.01);
     box-shadow:
       0 34px 70px rgba(3, 82, 209, 0.33),
       inset 0 1px 0 rgba(255, 255, 255, 0.28);
   }
 
   100% {
-    opacity: 0;
-    transform: translate3d(-50%, 126%, 0) scale(0.985);
+    transform: translate3d(0, 0, 0) scale(1);
     box-shadow:
-      0 20px 44px rgba(3, 82, 209, 0.18),
+      0 20px 44px rgba(3, 82, 209, 0.24),
       inset 0 1px 0 rgba(255, 255, 255, 0.24);
   }
 }
