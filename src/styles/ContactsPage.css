@@ -403,3 +403,125 @@
     border-radius: 16px;
   }
 }
+
+html.real-mobile .contacts-page {
+  width: var(--real-vw, 100vw);
+  max-width: var(--real-vw, 100vw);
+  min-width: 0;
+  padding: calc(var(--actual-header-height, 114px) + 22px) 14px 52px;
+  overflow-x: hidden;
+}
+
+html.real-mobile .contacts-page__inner {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+html.real-mobile .contacts-page__eyebrow {
+  max-width: 100%;
+  margin-bottom: 11px;
+  padding: 7px 12px;
+  font-size: 12px;
+}
+
+html.real-mobile .contacts-page__title {
+  max-width: 100%;
+  font-size: 34px;
+  line-height: 1;
+}
+
+html.real-mobile .contacts-page__subtitle {
+  max-width: 100%;
+  margin: 12px 0 20px;
+  font-size: 15px;
+  line-height: 1.32;
+  overflow-wrap: break-word;
+}
+
+html.real-mobile .contacts-page__grid {
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  gap: 14px;
+}
+
+html.real-mobile .contact-card {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 18px;
+  border-radius: 21px;
+}
+
+html.real-mobile .contact-card__top {
+  gap: 12px;
+}
+
+html.real-mobile .contact-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+}
+
+html.real-mobile .contact-card__icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+html.real-mobile .contact-card__badge {
+  padding: 7px 9px;
+  font-size: 12px;
+}
+
+html.real-mobile .contact-card__address {
+  max-width: 100%;
+  margin: 17px 0 14px;
+  font-size: 21px;
+  line-height: 1.14;
+  overflow-wrap: anywhere;
+}
+
+html.real-mobile .contact-card__meta {
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+html.real-mobile .contact-card__meta a {
+  font-size: 16px;
+}
+
+html.real-mobile .contact-card__toggle {
+  min-height: 48px;
+  border-radius: 13px;
+}
+
+html.real-mobile .contact-card__media {
+  height: 242px;
+  margin-top: 14px;
+  border-radius: 16px;
+}
+
+html.real-mobile .contact-card__map {
+  height: 242px;
+  border-radius: 16px;
+}
+
+@media (max-width: 360px) {
+  html.real-mobile .contacts-page {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  html.real-mobile .contact-card {
+    padding: 16px;
+  }
+
+  html.real-mobile .contact-card__address {
+    font-size: 20px;
+  }
+}
