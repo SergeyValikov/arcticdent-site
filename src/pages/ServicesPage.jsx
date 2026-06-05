@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
+import Advantages from '../components/Advantages.jsx'
 import { services } from '../data/services.js'
 import '../styles/ServicesPage.css'
 
@@ -322,6 +323,8 @@ export default function ServicesPage() {
           <span aria-hidden="true">→</span>
         </a>
       </div>
+
+      <Advantages className="services-page__advantages" />
     </section>
   )
 }

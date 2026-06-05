@@ -18,9 +18,9 @@ const advantages = [
   },
 ]
 
-export default function Advantages() {
+export default function Advantages({ className = '' }) {
   return (
-    <section className="advantages" aria-label="Навигация по клинике">
+    <section className={['advantages', className].filter(Boolean).join(' ')} aria-label="Навигация по клинике">
       {advantages.map((item) => {
         const content = (
           <>
