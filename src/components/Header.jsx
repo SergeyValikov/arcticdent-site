@@ -10,9 +10,9 @@ const navItems = [
   { label: 'Документы', to: '/documents' },
 ]
 const messengerItems = [
-  { id: 'vk', label: 'ВКонтакте', href: '#vk' },
+  { id: 'vk', label: 'ВКонтакте', href: 'https://vk.ru/arcticdent', isExternal: true },
   { id: 'max', label: 'MAX', href: '#max' },
-  { id: 'telegram', label: 'Telegram', href: '#telegram' },
+  { id: 'telegram', label: 'Telegram', href: 'https://t.me/arcticdent51', isExternal: true },
 ]
 
 function MessengerIcon({ id }) {
@@ -146,6 +146,8 @@ export default function Header() {
                   href={item.href}
                   key={item.id}
                   aria-label={item.label}
+                  target={item.isExternal ? '_blank' : undefined}
+                  rel={item.isExternal ? 'noreferrer' : undefined}
                   tabIndex={isMessengerOpen ? 0 : -1}
                   onClick={() => setIsMessengerOpen(false)}
                 >
@@ -155,7 +157,13 @@ export default function Header() {
             </div>
           </div>
 
-          <a className="header__social-link header__social-link--vk" href="#vk" aria-label="ВКонтакте">
+          <a
+            className="header__social-link header__social-link--vk"
+            href="https://vk.ru/arcticdent"
+            aria-label="ВКонтакте"
+            target="_blank"
+            rel="noreferrer"
+          >
             <svg viewBox="0 0 64 40" aria-hidden="true" focusable="false">
               <path d="M4.2 8.1h9.3c.3 5.25 2.47 9.88 6.36 13.38V8.1h8.72v7.45c3.65-.39 7.48-4.29 8.77-7.45h8.72c-.98 3.9-4.28 8.2-7.48 10.3 3.57 1.75 7.16 5.45 8.84 11.5h-9.6c-1.33-3.55-4.48-6.6-9.25-7.07v7.07h-1.05C13.45 29.9 5.45 20.35 4.2 8.1Z" />
             </svg>
@@ -163,7 +171,13 @@ export default function Header() {
           <a className="header__social-link header__social-link--max" href="#max" aria-label="MAX">
             <img src="/assets/max-logo.png" alt="" />
           </a>
-          <a className="header__social-link header__social-link--telegram" href="#telegram" aria-label="Telegram">
+          <a
+            className="header__social-link header__social-link--telegram"
+            href="https://t.me/arcticdent51"
+            aria-label="Telegram"
+            target="_blank"
+            rel="noreferrer"
+          >
             <svg viewBox="0 0 56 56" aria-hidden="true" focusable="false">
               <path d="M47.8 10.4 40.6 45c-.54 2.55-2.04 3.14-4.12 1.96l-11.4-8.4-5.5 5.3c-.62.6-1.12 1.1-2.3 1.1l.82-11.62 21.14-19.1c.92-.82-.2-1.28-1.42-.46L11.68 30.24.42 26.72c-2.45-.76-2.5-2.45.5-3.62L45.02 6.1c2.05-.76 3.84.5 2.78 4.3Z" />
             </svg>
