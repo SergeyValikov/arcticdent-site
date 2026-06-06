@@ -101,8 +101,12 @@
   justify-content: center;
   width: clamp(44px, 3.25vw, 52px);
   height: clamp(44px, 3.25vw, 52px);
+  padding: 0;
   color: var(--blue);
+  font: inherit;
   line-height: 1;
+  appearance: none;
+  cursor: pointer;
   background:
     radial-gradient(circle at 34% 24%, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.58) 44%, rgba(246, 250, 255, 0.58) 100%);
   border: 1px solid rgba(223, 233, 247, 0.64);
@@ -158,6 +162,39 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 4.1;
+}
+
+.header__social-link--accessibility[aria-pressed="true"],
+html.accessible-mode .header__social-link--accessibility {
+  color: #0757d7;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(223, 238, 255, 0.96) 0%, rgba(255, 255, 255, 0.82) 64%),
+    rgba(255, 255, 255, 0.9);
+  border-color: rgba(63, 126, 229, 0.52);
+  box-shadow:
+    0 12px 28px rgba(3, 82, 209, 0.15),
+    0 0 0 0 rgba(32, 115, 238, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  animation: accessibilityButtonPulse 2.15s ease-in-out infinite;
+}
+
+@keyframes accessibilityButtonPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 12px 28px rgba(3, 82, 209, 0.15),
+      0 0 0 0 rgba(32, 115, 238, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.88);
+    transform: scale(1);
+  }
+
+  46% {
+    box-shadow:
+      0 16px 34px rgba(3, 82, 209, 0.22),
+      0 0 0 9px rgba(32, 115, 238, 0.13),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    transform: scale(1.035);
+  }
 }
 
 .header__social-link--phone {
@@ -278,6 +315,47 @@
   .header__social-link {
     width: 46px;
     height: 46px;
+  }
+}
+
+@media (min-width: 1025px) {
+  html.accessible-mode:not(.real-mobile) .header {
+    grid-template-columns: minmax(250px, 340px) minmax(0, 1fr) minmax(370px, max-content);
+    column-gap: clamp(24px, 3.2vw, 52px);
+  }
+
+  html.accessible-mode:not(.real-mobile) .header__nav {
+    justify-self: center;
+    width: max-content;
+    max-width: 100%;
+    gap: clamp(30px, 3vw, 54px);
+  }
+
+  html.accessible-mode:not(.real-mobile) .header__actions {
+    justify-self: end;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  html.accessible-mode:not(.real-mobile) .header {
+    grid-template-columns: minmax(230px, 300px) minmax(0, 1fr) minmax(330px, max-content);
+    column-gap: clamp(22px, 2.4vw, 34px);
+  }
+
+  html.accessible-mode:not(.real-mobile) .header__nav {
+    gap: clamp(26px, 2.4vw, 38px);
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  html.accessible-mode:not(.real-mobile) .header {
+    grid-template-columns: minmax(210px, 270px) minmax(0, 1fr) minmax(300px, max-content);
+    column-gap: 24px;
+  }
+
+  html.accessible-mode:not(.real-mobile) .header__nav {
+    gap: 22px;
+    font-size: clamp(16px, 1.25vw, 18px);
   }
 }
 

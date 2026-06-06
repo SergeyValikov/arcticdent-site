@@ -963,9 +963,12 @@
 
   .hero-section__eyebrow {
     max-width: calc(100vw - 36px);
+    width: min(100%, calc(100vw - 36px));
+    box-sizing: border-box;
+    flex-wrap: wrap;
     padding-inline: 12px;
     font-size: clamp(11.2px, 3.45vw, 13px);
-    white-space: nowrap;
+    white-space: normal;
   }
 
   .hero-section__visual {

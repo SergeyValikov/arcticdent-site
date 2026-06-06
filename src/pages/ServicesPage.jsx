@@ -20,10 +20,15 @@ const shouldUseMobileServiceImage = () => {
   )
 }
 
+const isAccessibleModeEnabled = () => (
+  typeof document !== 'undefined' && document.documentElement.classList.contains('accessible-mode')
+)
+
 export default function ServicesPage() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [direction, setDirection] = useState('next')
   const [isAutoplayStopped, setIsAutoplayStopped] = useState(false)
+  const [isAccessibleMode, setIsAccessibleMode] = useState(isAccessibleModeEnabled)
   const [isSwipeHintDismissed, setIsSwipeHintDismissed] = useState(false)
   const [isCtaNudging, setIsCtaNudging] = useState(false)
   const [usesMobileServiceImage, setUsesMobileServiceImage] = useState(shouldUseMobileServiceImage)
@@ -166,7 +171,7 @@ export default function ServicesPage() {
   }
 
   useEffect(() => {
-    if (isAutoplayStopped || services.length <= 1) {
+    if (isAutoplayStopped || isAccessibleMode || services.length <= 1) {
       return undefined
     }
 
@@ -178,7 +183,20 @@ export default function ServicesPage() {
     return () => {
       window.clearInterval(autoplayRef.current)
     }
-  }, [isAutoplayStopped])
+  }, [isAutoplayStopped, isAccessibleMode])
+
+  useEffect(() => {
+    const syncAccessibleMode = (event) => {
+      setIsAccessibleMode(Boolean(event.detail?.enabled))
+    }
+
+    setIsAccessibleMode(isAccessibleModeEnabled())
+    window.addEventListener('accessiblemodechange', syncAccessibleMode)
+
+    return () => {
+      window.removeEventListener('accessiblemodechange', syncAccessibleMode)
+    }
+  }, [])
 
   useEffect(() => () => {
     window.clearTimeout(ctaNudgeTimeoutRef.current)

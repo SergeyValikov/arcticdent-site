@@ -661,3 +661,399 @@ html.real-mobile .advantage p {
     height: 29px;
   }
 }
+
+html.accessible-mode {
+  --accessible-line-scale: 1.14;
+  --accessible-letter-spacing: 0.012em;
+  --ink: #020b28;
+  --muted: #263650;
+  color: var(--ink);
+}
+
+html.accessible-mode body {
+  color: var(--ink);
+  letter-spacing: var(--accessible-letter-spacing);
+}
+
+html.accessible-mode p,
+html.accessible-mode li,
+html.accessible-mode a,
+html.accessible-mode button,
+html.accessible-mode input,
+html.accessible-mode textarea {
+  line-height: calc(1em * var(--accessible-line-scale) + 0.34em);
+}
+
+html.accessible-mode .header__nav {
+  color: #020b28;
+  font-size: clamp(18px, 1.28vw, 21px);
+  font-weight: 780;
+}
+
+html.accessible-mode .header__social-link,
+html.accessible-mode .header__message-toggle,
+html.accessible-mode .header__messenger-option {
+  min-width: 50px;
+  min-height: 50px;
+}
+
+html.accessible-mode .header__message-toggle span {
+  font-size: 1.06em;
+  font-weight: 780;
+}
+
+html.accessible-mode .hero-section__eyebrow,
+html.accessible-mode .contacts-page__eyebrow,
+html.accessible-mode .page-placeholder__label {
+  font-size: clamp(17px, 1.24vw, 21px);
+  font-weight: 780;
+}
+
+html.accessible-mode .hero-section h1,
+html.accessible-mode .contacts-page h1,
+html.accessible-mode .page-placeholder h1 {
+  color: #020b28;
+  font-size: clamp(52px, 4.95vw, 78px);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+html.accessible-mode .hero-section__lead,
+html.accessible-mode .contacts-page__lead,
+html.accessible-mode .page-placeholder__text {
+  color: #263650;
+  font-size: clamp(20px, 1.58vw, 25px);
+  line-height: 1.58;
+}
+
+html.accessible-mode .button {
+  min-height: 68px;
+  font-size: clamp(17px, 1.24vw, 21px);
+  font-weight: 760;
+  letter-spacing: 0.01em;
+}
+
+html.accessible-mode .trust-item__icon,
+html.accessible-mode .advantage__icon,
+html.accessible-mode .location-card__icon {
+  color: #0757d7;
+  background:
+    radial-gradient(circle at 36% 24%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.58) 42%, rgba(255, 255, 255, 0) 70%),
+    #e8f2ff;
+  border-color: rgba(169, 202, 247, 0.98);
+}
+
+html.accessible-mode .trust-item strong,
+html.accessible-mode .advantage h2,
+html.accessible-mode .location-card__address,
+html.accessible-mode .doctor-card__name,
+html.accessible-mode .contacts-page h2,
+html.accessible-mode .page-placeholder__card h1 {
+  color: #020b28;
+  font-size: clamp(22px, 1.68vw, 30px);
+  line-height: 1.22;
+}
+
+html.accessible-mode .trust-item p,
+html.accessible-mode .advantage p,
+html.accessible-mode .doctor-card__role,
+html.accessible-mode .doctor-card__description,
+html.accessible-mode .location-card p,
+html.accessible-mode .location-card a,
+html.accessible-mode .contacts-page p {
+  color: #263650;
+  font-size: clamp(16.5px, 1.12vw, 19px);
+  line-height: 1.55;
+}
+
+html.accessible-mode .trust-item strong,
+html.accessible-mode .trust-item p {
+  color: #020b28;
+  font-weight: 820;
+}
+
+html.accessible-mode .advantage h2,
+html.accessible-mode .advantage:last-child h2 {
+  font-size: clamp(27px, 1.86vw, 34px);
+  font-weight: 830;
+  line-height: 1.05;
+}
+
+html.accessible-mode .page-placeholder__card h1 {
+  font-size: clamp(38px, 4.8vw, 68px);
+  font-weight: 840;
+  line-height: 0.98;
+}
+
+html.accessible-mode .location-card__phone,
+html.accessible-mode .contacts-page a {
+  color: #0757d7;
+  font-weight: 780;
+}
+
+html.accessible-mode a:focus-visible,
+html.accessible-mode button:focus-visible,
+html.accessible-mode input:focus-visible,
+html.accessible-mode textarea:focus-visible,
+html.accessible-mode [tabindex]:focus-visible {
+  outline: 4px solid rgba(0, 86, 232, 0.72);
+  outline-offset: 5px;
+  box-shadow: 0 0 0 8px rgba(0, 86, 232, 0.14);
+}
+
+html.accessible-mode .button--primary::after,
+html.accessible-mode .services-slider__arrow,
+html.accessible-mode .services-slider__swipe-hint img,
+html.accessible-mode .services-slider__cta--mobile[data-nudge="true"],
+html.accessible-mode .hero-photo__image,
+html.accessible-mode .doctor-card,
+html.accessible-mode .page-transition.is-entering,
+html.accessible-mode .page-transition.is-leaving {
+  animation: none;
+}
+
+html.accessible-mode .button,
+html.accessible-mode .header__social-link,
+html.accessible-mode .header__message-toggle,
+html.accessible-mode .advantage,
+html.accessible-mode .doctor-card,
+html.accessible-mode .location-card,
+html.accessible-mode .services-slider__dot {
+  transition-duration: 0.12s;
+}
+
+html.accessible-mode .page-transition.is-entering,
+html.accessible-mode .page-transition.is-leaving,
+html.accessible-mode .page-transition.is-idle {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+html.accessible-mode .services-slider__arrow {
+  opacity: 0.92;
+}
+
+html.accessible-mode .services-slider__dot {
+  min-width: 15px;
+  min-height: 15px;
+}
+
+html.accessible-mode .services-slider__dot[aria-current="true"] {
+  min-width: 46px;
+}
+
+@media (min-width: 1025px) {
+  html.accessible-mode:not(.real-mobile) .hero-section {
+    height: auto;
+    min-height: clamp(820px, 78vh, 980px);
+    overflow: visible;
+  }
+
+  html.accessible-mode:not(.real-mobile) .hero-section__content {
+    height: auto;
+    min-height: clamp(820px, 78vh, 980px);
+    overflow: visible;
+  }
+
+  html.accessible-mode:not(.real-mobile) .hero-section__copy {
+    max-width: 760px;
+    padding-bottom: clamp(50px, 5.8vh, 84px);
+  }
+
+  html.accessible-mode:not(.real-mobile) .hero-section__actions {
+    grid-template-columns: minmax(370px, 460px) minmax(260px, 320px);
+    max-width: 800px;
+    margin-top: clamp(32px, 4vh, 46px);
+  }
+
+  html.accessible-mode:not(.real-mobile) .hero-section__actions .button {
+    min-height: clamp(72px, 6.2vh, 84px);
+  }
+
+  html.accessible-mode:not(.real-mobile) .button--ghost {
+    white-space: normal;
+  }
+
+  html.accessible-mode:not(.real-mobile) .advantages:not(.services-page__advantages) {
+    margin-top: clamp(12px, 2vh, 28px);
+  }
+
+  html.accessible-mode:not(.real-mobile) .services-slider__cta--desktop {
+    width: clamp(390px, 27vw, 500px);
+    min-height: clamp(106px, 11.2vh, 128px);
+    padding-inline: clamp(30px, 2.4vw, 42px) clamp(78px, 5.4vw, 102px);
+    font-size: clamp(21px, 1.42vw, 26px);
+    letter-spacing: 0.006em;
+  }
+
+  html.accessible-mode:not(.real-mobile) .services-slider__cta--desktop strong {
+    width: 100%;
+    max-width: 330px;
+    font-weight: 840;
+    line-height: 1.16;
+  }
+
+  html.accessible-mode:not(.real-mobile) .services-slider__cta--desktop span {
+    right: clamp(28px, 2.3vw, 42px);
+    font-size: clamp(44px, 3vw, 54px);
+  }
+}
+
+html.accessible-mode.real-mobile {
+  --accessible-letter-spacing: 0.004em;
+}
+
+html.accessible-mode.real-mobile .header {
+  min-height: 118px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+html.accessible-mode.real-mobile .header__logo img,
+html.accessible-mode.real-mobile .logo img {
+  width: clamp(144px, calc(var(--real-vw, 100vw) * 0.39), 166px);
+  max-width: min(166px, calc(var(--real-vw, 100vw) - 180px));
+}
+
+html.accessible-mode.real-mobile .header__socials {
+  gap: clamp(3px, calc(var(--real-vw, 100vw) * 0.009), 4px);
+}
+
+html.accessible-mode.real-mobile .header__social-link {
+  width: clamp(29px, calc(var(--real-vw, 100vw) * 0.078), 31px);
+  height: clamp(29px, calc(var(--real-vw, 100vw) * 0.078), 31px);
+  min-width: 0;
+  min-height: 0;
+}
+
+html.accessible-mode.real-mobile .header__message-toggle {
+  height: clamp(29px, calc(var(--real-vw, 100vw) * 0.078), 31px);
+  min-width: clamp(86px, calc(var(--real-vw, 100vw) * 0.238), 96px);
+  min-height: 0;
+  padding-inline: clamp(8px, calc(var(--real-vw, 100vw) * 0.022), 10px);
+  font-size: clamp(10.8px, calc(var(--real-vw, 100vw) * 0.0305), 12px);
+  font-weight: 760;
+}
+
+html.accessible-mode.real-mobile .header__messenger-option {
+  width: 40px;
+  height: 40px;
+  min-width: 0;
+  min-height: 0;
+}
+
+html.accessible-mode.real-mobile .header__nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  padding-inline: 0;
+  font-size: clamp(11.6px, calc(var(--real-vw, 100vw) * 0.032), 13px);
+  font-weight: 760;
+  letter-spacing: 0;
+}
+
+html.accessible-mode.real-mobile .header__nav a {
+  min-height: 34px;
+  padding: 8px 1px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+html.accessible-mode.real-mobile .hero-section {
+  min-height: 820px;
+}
+
+html.accessible-mode.real-mobile .hero-section__content {
+  min-height: 820px;
+}
+
+html.accessible-mode.real-mobile .hero-section__copy {
+  padding-top: calc(var(--actual-header-height, 118px) + 30px);
+}
+
+html.accessible-mode.real-mobile .hero-section__eyebrow {
+  max-width: calc(var(--real-vw, 100vw) - 36px);
+  min-height: 0;
+  padding-block: 8px;
+  font-size: clamp(12px, calc(var(--real-vw, 100vw) * 0.034), 14px);
+  line-height: 1.22;
+  letter-spacing: 0;
+  white-space: normal;
+  flex-wrap: wrap;
+}
+
+html.accessible-mode.real-mobile .hero-section h1 {
+  font-size: clamp(38px, calc(var(--real-vw, 100vw) * 0.118), 50px);
+  line-height: 1.06;
+}
+
+html.accessible-mode.real-mobile .hero-section__lead {
+  font-size: clamp(18px, calc(var(--real-vw, 100vw) * 0.048), 20px);
+  line-height: 1.58;
+}
+
+html.accessible-mode.real-mobile .trust-item {
+  grid-template-columns: 60px minmax(0, 1fr);
+}
+
+html.accessible-mode.real-mobile .trust-item__icon {
+  width: 60px;
+  height: 60px;
+}
+
+html.accessible-mode.real-mobile .trust-item strong,
+html.accessible-mode.real-mobile .trust-item p {
+  font-size: clamp(18px, calc(var(--real-vw, 100vw) * 0.052), 21px);
+}
+
+html.accessible-mode.real-mobile .button {
+  min-height: 66px;
+  font-size: clamp(16px, calc(var(--real-vw, 100vw) * 0.046), 19px);
+}
+
+html.accessible-mode.real-mobile .advantage {
+  min-height: 124px;
+}
+
+html.accessible-mode.real-mobile .advantage h2 {
+  font-size: clamp(24px, calc(var(--real-vw, 100vw) * 0.066), 27px);
+}
+
+html.accessible-mode.real-mobile .advantage p {
+  font-size: clamp(15.5px, calc(var(--real-vw, 100vw) * 0.043), 17px);
+  line-height: 1.4;
+}
+
+html.accessible-mode.real-mobile .doctor-card__name,
+html.accessible-mode.real-mobile .location-card__address {
+  font-size: clamp(20px, calc(var(--real-vw, 100vw) * 0.058), 24px);
+}
+
+html.accessible-mode.real-mobile .doctor-card__role,
+html.accessible-mode.real-mobile .location-card p,
+html.accessible-mode.real-mobile .location-card a {
+  font-size: clamp(15.5px, calc(var(--real-vw, 100vw) * 0.043), 18px);
+}
+
+@media (max-width: 360px) {
+  html.accessible-mode.real-mobile .header__logo img,
+  html.accessible-mode.real-mobile .logo img {
+    width: 140px;
+    max-width: 140px;
+  }
+
+  html.accessible-mode.real-mobile .header__message-toggle {
+    min-width: 82px;
+    font-size: 10.4px;
+  }
+
+  html.accessible-mode.real-mobile .header__social-link {
+    width: 28px;
+    height: 28px;
+  }
+
+  html.accessible-mode.real-mobile .header__nav {
+    font-size: 11px;
+  }
+}

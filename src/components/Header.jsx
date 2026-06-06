@@ -15,6 +15,24 @@ const messengerItems = [
   { id: 'telegram', label: 'Telegram', href: 'https://t.me/arcticdent51', isExternal: true },
 ]
 
+const ACCESSIBLE_MODE_STORAGE_KEY = 'accessibleMode'
+
+const getInitialAccessibleMode = () => {
+  if (typeof document === 'undefined') {
+    return false
+  }
+
+  if (document.documentElement.classList.contains('accessible-mode')) {
+    return true
+  }
+
+  try {
+    return localStorage.getItem(ACCESSIBLE_MODE_STORAGE_KEY) === 'true'
+  } catch (error) {
+    return false
+  }
+}
+
 function MessengerIcon({ id }) {
   if (id === 'vk') {
     return (
@@ -37,10 +55,27 @@ function MessengerIcon({ id }) {
 
 export default function Header() {
   const [isMessengerOpen, setIsMessengerOpen] = useState(false)
+  const [isAccessibleMode, setIsAccessibleMode] = useState(getInitialAccessibleMode)
   const headerRef = useRef(null)
   const messengerRef = useRef(null)
   const location = useLocation()
   const currentPath = location.pathname.replace(/\/+$/, '') || '/'
+
+  useEffect(() => {
+    const root = document.documentElement
+
+    root.classList.toggle('accessible-mode', isAccessibleMode)
+
+    try {
+      localStorage.setItem(ACCESSIBLE_MODE_STORAGE_KEY, isAccessibleMode ? 'true' : 'false')
+    } catch (error) {
+      // The visual mode should still work if storage is unavailable.
+    }
+
+    window.dispatchEvent(new CustomEvent('accessiblemodechange', {
+      detail: { enabled: isAccessibleMode },
+    }))
+  }, [isAccessibleMode])
 
   useLayoutEffect(() => {
     const root = document.documentElement
@@ -182,13 +217,20 @@ export default function Header() {
               <path d="M47.8 10.4 40.6 45c-.54 2.55-2.04 3.14-4.12 1.96l-11.4-8.4-5.5 5.3c-.62.6-1.12 1.1-2.3 1.1l.82-11.62 21.14-19.1c.92-.82-.2-1.28-1.42-.46L11.68 30.24.42 26.72c-2.45-.76-2.5-2.45.5-3.62L45.02 6.1c2.05-.76 3.84.5 2.78 4.3Z" />
             </svg>
           </a>
-          <a className="header__social-link header__social-link--accessibility" href="#accessibility" aria-label="Версия для слабовидящих">
+          <button
+            className="header__social-link header__social-link--accessibility"
+            type="button"
+            aria-label={isAccessibleMode ? 'Обычная версия' : 'Версия для слабовидящих'}
+            aria-pressed={isAccessibleMode}
+            title={isAccessibleMode ? 'Обычная версия' : 'Версия для слабовидящих'}
+            onClick={() => setIsAccessibleMode((isEnabled) => !isEnabled)}
+          >
             <svg viewBox="0 0 56 56" aria-hidden="true" focusable="false">
               <path d="M6.5 28s7.7-13 21.5-13 21.5 13 21.5 13S41.8 41 28 41 6.5 28 6.5 28Z" />
               <circle cx="28" cy="28" r="7.1" />
               <path d="M28 6.9v5.1m0 32v5.1m15-36.1-3.6 3.6M16.6 39.4 13 43m30-1-3.6-3.6M16.6 16.6 13 13" />
             </svg>
-          </a>
+          </button>
           <a className="header__social-link header__social-link--phone" href="#phone" aria-label="Позвонить">
             <svg viewBox="0 0 56 56" aria-hidden="true" focusable="false">
               <path d="M19.4 9.8 13.8 15.4c-2.35 2.35-2.05 7.2.68 12.62 2.22 4.42 5.74 8.88 9.72 12.3 5.1 4.4 10.54 6.72 13.34 3.92l5.64-5.64-9.72-9.72-4.02 4.02c-1.28-.5-2.9-1.58-4.62-3.3-1.72-1.72-2.8-3.34-3.3-4.62l4.02-4.02-6.14-11.16Z" />
