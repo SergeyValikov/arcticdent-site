@@ -29,7 +29,14 @@
             viewport.setAttribute('content', 'width=device-width, initial-scale=1.0')
           }
 
-          var isTouch = navigator.maxTouchPoints > 0 || 'ontouchstart' in window
+          var hasCoarsePointer = window.matchMedia
+            ? window.matchMedia('(pointer: coarse)').matches
+            : false
+          var isApplePhone = /iPhone|iPod/i.test(navigator.userAgent || '')
+          var isTouch = hasCoarsePointer
+            || navigator.maxTouchPoints > 0
+            || 'ontouchstart' in window
+            || isApplePhone
           var screenWidth = Math.min(screen.width || 9999, screen.height || 9999)
           var layoutViewport = window.innerWidth || root.clientWidth || screenWidth
           var isPinchZoom = window.visualViewport && window.visualViewport.scale && window.visualViewport.scale > 1.01
