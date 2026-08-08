@@ -934,11 +934,23 @@ html.accessible-mode .header__social-link--accessibility {
   }
 
   .header__doctors-menu {
-    top: calc(100% + 8px);
-    width: min(330px, calc(100vw - 34px));
-    max-height: min(62dvh, 430px);
+    position: fixed;
+    top: calc(var(--actual-header-height, 114px) + 8px);
+    right: max(12px, env(safe-area-inset-right));
+    left: max(12px, env(safe-area-inset-left));
+    width: auto;
+    max-width: none;
+    max-height: calc(100vh - var(--actual-header-height, 114px) - 24px);
+    max-height: min(62dvh, calc(100dvh - var(--actual-header-height, 114px) - 24px));
     padding: 8px;
+    overflow-x: hidden;
     border-radius: 14px;
+    transform: translateY(-8px) scale(0.98);
+    transform-origin: 50% 0;
+  }
+
+  .header__doctors-menu[data-open="true"] {
+    transform: translateY(0) scale(1);
   }
 
   .header__nav .header__doctors-menu a {

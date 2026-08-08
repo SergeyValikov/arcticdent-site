@@ -70,6 +70,11 @@ export default function Header() {
     setIsDoctorsOpen(true)
   }
 
+  const toggleDoctorsMenu = () => {
+    window.clearTimeout(doctorsCloseTimerRef.current)
+    setIsDoctorsOpen((isOpen) => !isOpen)
+  }
+
   const closeDoctorsMenu = () => {
     window.clearTimeout(doctorsCloseTimerRef.current)
     setIsDoctorsOpen(false)
@@ -210,7 +215,7 @@ export default function Header() {
             type="button"
             aria-expanded={isDoctorsOpen}
             aria-controls="doctors-specialties-menu"
-            onClick={openDoctorsMenu}
+            onClick={toggleDoctorsMenu}
           >
             <span>Врачи</span>
             <svg viewBox="0 0 12 8" aria-hidden="true" focusable="false">

@@ -1,7 +1,7 @@
 export const doctors = [
   {
-    id: 'chekanchi',
-    name: 'Чеканчи Максим Владимирович',
+    id: 'chikanchi',
+    name: 'Чиканчи Максим Владимирович',
     role: 'Главный врач, стоматолог-терапевт',
     description: 'Подробная информация о враче скоро появится.',
     experience: '',
