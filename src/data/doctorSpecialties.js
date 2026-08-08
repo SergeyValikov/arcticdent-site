@@ -1,20 +1,24 @@
-const createDoctors = (slug, title, count) => Array.from({ length: count }, (_, index) => {
-  const number = String(index + 1).padStart(2, '0')
+const createDoctors = (slug, title, count, imageOrder) => {
+  const orderedImages = imageOrder ?? Array.from({ length: count }, (_, index) => index + 1)
 
-  return {
-    id: `${slug}-${number}`,
-    name: 'Подробнее о специалисте',
-    role: title,
-    description: 'Подробная информация о враче скоро появится.',
-    image: `/images/doctors/${slug}/doctor-${number}.jpg`,
-  }
-})
+  return orderedImages.map((imageIndex) => {
+    const number = String(imageIndex).padStart(2, '0')
+
+    return {
+      id: `${slug}-${number}`,
+      name: 'Подробнее о специалисте',
+      role: title,
+      description: 'Подробная информация о враче скоро появится.',
+      image: `/images/doctors/${slug}/doctor-${number}.jpg`,
+    }
+  })
+}
 
 export const doctorSpecialties = [
   {
     slug: 'leadership',
     title: 'Руководители направлений',
-    doctors: createDoctors('leadership', 'Руководители направлений', 3),
+    doctors: createDoctors('leadership', 'Руководители направлений', 3, [3, 1, 2]),
   },
   {
     slug: 'therapists',
