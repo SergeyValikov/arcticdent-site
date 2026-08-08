@@ -77,6 +77,7 @@ function AppLayout() {
           <Routes location={displayLocation}>
             <Route path="/" element={<HomePage />} />
             <Route path="/doctors" element={<DoctorsPage />} />
+            <Route path="/doctors/:specialtySlug" element={<DoctorsPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/contacts" element={<ContactsPage />} />
             <Route path="/prices" element={<PlaceholderPage sectionTitle="Цены" />} />

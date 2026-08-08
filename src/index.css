@@ -368,6 +368,10 @@ html.real-mobile .doctor-card:hover:not(.is-active) .doctor-card__sprite {
   transform: scale(1.002);
 }
 
+html.real-mobile .doctor-card:hover:not(.is-active) .doctor-card__image {
+  transform: scale(1.002);
+}
+
 html.real-mobile .doctor-card__overlay {
   padding: 14px;
 }

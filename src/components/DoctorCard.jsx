@@ -70,7 +70,7 @@ export default function DoctorCard({ doctor, isActive, onToggle }) {
   return (
     <article
       className={`doctor-card${isActive ? ' is-active' : ''}`}
-      style={getCropStyles(doctor.crop)}
+      style={doctor.crop ? getCropStyles(doctor.crop) : undefined}
       role="button"
       tabIndex={0}
       aria-label={`${doctor.name}. ${doctor.role}`}
@@ -81,7 +81,17 @@ export default function DoctorCard({ doctor, isActive, onToggle }) {
       onPointerLeave={handlePointerCancel}
       onKeyDown={handleKeyDown}
     >
-      <div className="doctor-card__sprite" aria-hidden="true" />
+      {doctor.image ? (
+        <img
+          className="doctor-card__image"
+          src={doctor.image}
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <div className="doctor-card__sprite" aria-hidden="true" />
+      )}
       <div className="doctor-card__overlay" aria-hidden={!isActive}>
         <div className="doctor-card__overlay-content">
           <p className="doctor-card__name">{doctor.name}</p>

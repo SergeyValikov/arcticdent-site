@@ -1,10 +1,10 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
+import { doctorSpecialties } from '../data/doctorSpecialties.js'
 import './Header.css'
 
 const navItems = [
-  { label: 'Врачи', to: '/doctors' },
   { label: 'Услуги', to: '/services' },
   { label: 'Цены', to: '/prices' },
   { label: 'Документы', to: '/documents' },
@@ -28,7 +28,7 @@ const getInitialAccessibleMode = () => {
 
   try {
     return localStorage.getItem(ACCESSIBLE_MODE_STORAGE_KEY) === 'true'
-  } catch (error) {
+  } catch {
     return false
   }
 }
@@ -55,11 +55,30 @@ function MessengerIcon({ id }) {
 
 export default function Header() {
   const [isMessengerOpen, setIsMessengerOpen] = useState(false)
+  const [isDoctorsOpen, setIsDoctorsOpen] = useState(false)
   const [isAccessibleMode, setIsAccessibleMode] = useState(getInitialAccessibleMode)
   const headerRef = useRef(null)
   const messengerRef = useRef(null)
+  const doctorsMenuRef = useRef(null)
+  const doctorsCloseTimerRef = useRef(null)
   const location = useLocation()
   const currentPath = location.pathname.replace(/\/+$/, '') || '/'
+  const isDoctorsActive = currentPath === '/doctors' || currentPath.startsWith('/doctors/')
+
+  const openDoctorsMenu = () => {
+    window.clearTimeout(doctorsCloseTimerRef.current)
+    setIsDoctorsOpen(true)
+  }
+
+  const closeDoctorsMenu = () => {
+    window.clearTimeout(doctorsCloseTimerRef.current)
+    setIsDoctorsOpen(false)
+  }
+
+  const scheduleDoctorsMenuClose = () => {
+    window.clearTimeout(doctorsCloseTimerRef.current)
+    doctorsCloseTimerRef.current = window.setTimeout(() => setIsDoctorsOpen(false), 140)
+  }
 
   useEffect(() => {
     const root = document.documentElement
@@ -68,7 +87,7 @@ export default function Header() {
 
     try {
       localStorage.setItem(ACCESSIBLE_MODE_STORAGE_KEY, isAccessibleMode ? 'true' : 'false')
-    } catch (error) {
+    } catch {
       // The visual mode should still work if storage is unavailable.
     }
 
@@ -131,6 +150,40 @@ export default function Header() {
     }
   }, [isMessengerOpen])
 
+  useEffect(() => {
+    if (!isDoctorsOpen) {
+      return undefined
+    }
+
+    const closeOnOutsideClick = (event) => {
+      if (!doctorsMenuRef.current?.contains(event.target)) {
+        closeDoctorsMenu()
+      }
+    }
+
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') {
+        closeDoctorsMenu()
+      }
+    }
+
+    document.addEventListener('pointerdown', closeOnOutsideClick)
+    document.addEventListener('keydown', closeOnEscape)
+
+    return () => {
+      document.removeEventListener('pointerdown', closeOnOutsideClick)
+      document.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [isDoctorsOpen])
+
+  useEffect(() => {
+    const closeTimeout = window.setTimeout(() => setIsDoctorsOpen(false), 0)
+
+    return () => window.clearTimeout(closeTimeout)
+  }, [location.pathname])
+
+  useEffect(() => () => window.clearTimeout(doctorsCloseTimerRef.current), [])
+
   return (
     <header className="header" ref={headerRef}>
       <Link className="header__logo" to="/" aria-label="Арктик Дент">
@@ -138,13 +191,66 @@ export default function Header() {
       </Link>
 
       <nav className="header__nav" aria-label="Основная навигация">
+        <div
+          className="header__doctors"
+          ref={doctorsMenuRef}
+          onPointerEnter={(event) => {
+            if (event.pointerType === 'mouse') {
+              openDoctorsMenu()
+            }
+          }}
+          onPointerLeave={(event) => {
+            if (event.pointerType === 'mouse') {
+              scheduleDoctorsMenuClose()
+            }
+          }}
+        >
+          <button
+            className={`header__doctors-toggle${isDoctorsActive ? ' is-active' : ''}`}
+            type="button"
+            aria-expanded={isDoctorsOpen}
+            aria-controls="doctors-specialties-menu"
+            onClick={openDoctorsMenu}
+          >
+            <span>Врачи</span>
+            <svg viewBox="0 0 12 8" aria-hidden="true" focusable="false">
+              <path d="m1 1.25 5 5 5-5" />
+            </svg>
+          </button>
+
+          <div
+            className="header__doctors-menu"
+            id="doctors-specialties-menu"
+            data-open={isDoctorsOpen}
+            aria-hidden={!isDoctorsOpen}
+          >
+            {doctorSpecialties.map((specialty) => {
+              const path = `/doctors/${specialty.slug}`
+              const isActive = currentPath === path
+
+              return (
+                <Link
+                  className={isActive ? 'is-active' : undefined}
+                  to={path}
+                  key={specialty.slug}
+                  aria-current={isActive ? 'page' : undefined}
+                  tabIndex={isDoctorsOpen ? 0 : -1}
+                  onClick={closeDoctorsMenu}
+                >
+                  {specialty.title}
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+
         {navItems.map((item) => {
           const itemPath = item.to.replace(/\/+$/, '') || '/'
           const isActive = currentPath === itemPath
 
           return (
             <Link
-              className={isActive ? 'is-active' : undefined}
+              className={`header__nav-link${isActive ? ' is-active' : ''}`}
               to={item.to}
               key={item.label}
               aria-current={isActive ? 'page' : undefined}
