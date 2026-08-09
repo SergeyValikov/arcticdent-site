@@ -18,6 +18,19 @@ const messengerItems = [
 
 const ACCESSIBLE_MODE_STORAGE_KEY = 'accessibleMode'
 
+const shouldUseDoctorsPortal = () => {
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return false
+  }
+
+  const screenWidth = Math.min(window.screen?.width || 9999, window.screen?.height || 9999)
+  const hasCoarsePointer = window.matchMedia('(pointer: coarse)').matches
+
+  return document.documentElement.classList.contains('real-mobile')
+    || window.matchMedia('(max-width: 560px)').matches
+    || (hasCoarsePointer && screenWidth <= 560)
+}
+
 const getInitialAccessibleMode = () => {
   if (typeof document === 'undefined') {
     return false
@@ -57,9 +70,7 @@ function MessengerIcon({ id }) {
 export default function Header() {
   const [isMessengerOpen, setIsMessengerOpen] = useState(false)
   const [isDoctorsOpen, setIsDoctorsOpen] = useState(false)
-  const [usesDoctorsPortal, setUsesDoctorsPortal] = useState(() => (
-    typeof window !== 'undefined' && window.matchMedia('(max-width: 560px)').matches
-  ))
+  const [usesDoctorsPortal, setUsesDoctorsPortal] = useState(shouldUseDoctorsPortal)
   const [isAccessibleMode, setIsAccessibleMode] = useState(getInitialAccessibleMode)
   const headerRef = useRef(null)
   const messengerRef = useRef(null)
@@ -136,9 +147,15 @@ export default function Header() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 560px)')
-    const updatePortalMode = () => setUsesDoctorsPortal(mediaQuery.matches)
+    const root = document.documentElement
+    const updatePortalMode = () => setUsesDoctorsPortal(shouldUseDoctorsPortal())
+    const rootObserver = new MutationObserver(updatePortalMode)
 
     updatePortalMode()
+    rootObserver.observe(root, { attributes: true, attributeFilter: ['class'] })
+    window.addEventListener('resize', updatePortalMode, { passive: true })
+    window.visualViewport?.addEventListener('resize', updatePortalMode, { passive: true })
+
     if (mediaQuery.addEventListener) {
       mediaQuery.addEventListener('change', updatePortalMode)
     } else {
@@ -146,6 +163,10 @@ export default function Header() {
     }
 
     return () => {
+      rootObserver.disconnect()
+      window.removeEventListener('resize', updatePortalMode)
+      window.visualViewport?.removeEventListener('resize', updatePortalMode)
+
       if (mediaQuery.removeEventListener) {
         mediaQuery.removeEventListener('change', updatePortalMode)
       } else {

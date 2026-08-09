@@ -958,3 +958,31 @@ html.accessible-mode .header__social-link--accessibility {
     font-size: 13px;
   }
 }
+
+/* The portal is also enabled by the real-mobile runtime marker. Keep these
+   rules after every desktop/tablet menu rule so Safari cannot override them. */
+.header__doctors-menu.header__doctors-menu--portal {
+  position: fixed;
+  z-index: 1400;
+  top: calc(var(--actual-header-height, 114px) + 8px);
+  right: max(12px, env(safe-area-inset-right));
+  left: max(12px, env(safe-area-inset-left));
+  width: auto;
+  max-width: none;
+  max-height: calc(100vh - var(--actual-header-height, 114px) - 24px);
+  max-height: min(62dvh, calc(100dvh - var(--actual-header-height, 114px) - 24px));
+  padding: 8px;
+  overflow-x: hidden;
+  border-radius: 14px;
+  transform: translateY(-8px) scale(0.98);
+  transform-origin: 50% 0;
+}
+
+.header__doctors-menu.header__doctors-menu--portal[data-open="true"] {
+  transform: translateY(0) scale(1);
+}
+
+.header__doctors-menu.header__doctors-menu--portal a {
+  padding: 9px 10px;
+  font-size: 13px;
+}
