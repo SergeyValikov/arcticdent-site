@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Link, useLocation } from 'react-router-dom'
 
 import { doctorSpecialties } from '../data/doctorSpecialties.js'
@@ -56,10 +57,14 @@ function MessengerIcon({ id }) {
 export default function Header() {
   const [isMessengerOpen, setIsMessengerOpen] = useState(false)
   const [isDoctorsOpen, setIsDoctorsOpen] = useState(false)
+  const [usesDoctorsPortal, setUsesDoctorsPortal] = useState(() => (
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 560px)').matches
+  ))
   const [isAccessibleMode, setIsAccessibleMode] = useState(getInitialAccessibleMode)
   const headerRef = useRef(null)
   const messengerRef = useRef(null)
   const doctorsMenuRef = useRef(null)
+  const doctorsDropdownRef = useRef(null)
   const doctorsCloseTimerRef = useRef(null)
   const location = useLocation()
   const currentPath = location.pathname.replace(/\/+$/, '') || '/'
@@ -130,6 +135,26 @@ export default function Header() {
   }, [])
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 560px)')
+    const updatePortalMode = () => setUsesDoctorsPortal(mediaQuery.matches)
+
+    updatePortalMode()
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', updatePortalMode)
+    } else {
+      mediaQuery.addListener(updatePortalMode)
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', updatePortalMode)
+      } else {
+        mediaQuery.removeListener(updatePortalMode)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
     if (!isMessengerOpen) {
       return undefined
     }
@@ -161,7 +186,10 @@ export default function Header() {
     }
 
     const closeOnOutsideClick = (event) => {
-      if (!doctorsMenuRef.current?.contains(event.target)) {
+      const isInsideToggle = doctorsMenuRef.current?.contains(event.target)
+      const isInsideDropdown = doctorsDropdownRef.current?.contains(event.target)
+
+      if (!isInsideToggle && !isInsideDropdown) {
         closeDoctorsMenu()
       }
     }
@@ -189,8 +217,47 @@ export default function Header() {
 
   useEffect(() => () => window.clearTimeout(doctorsCloseTimerRef.current), [])
 
+  const doctorsDropdown = (
+    <div
+      className={`header__doctors-menu${usesDoctorsPortal ? ' header__doctors-menu--portal' : ''}`}
+      id="doctors-specialties-menu"
+      data-open={isDoctorsOpen}
+      aria-hidden={!isDoctorsOpen}
+      ref={doctorsDropdownRef}
+      onPointerEnter={(event) => {
+        if (event.pointerType === 'mouse') {
+          openDoctorsMenu()
+        }
+      }}
+      onPointerLeave={(event) => {
+        if (event.pointerType === 'mouse') {
+          scheduleDoctorsMenuClose()
+        }
+      }}
+    >
+      {doctorSpecialties.map((specialty) => {
+        const path = `/doctors/${specialty.slug}`
+        const isActive = currentPath === path
+
+        return (
+          <Link
+            className={isActive ? 'is-active' : undefined}
+            to={path}
+            key={specialty.slug}
+            aria-current={isActive ? 'page' : undefined}
+            tabIndex={isDoctorsOpen ? 0 : -1}
+            onClick={closeDoctorsMenu}
+          >
+            {specialty.title}
+          </Link>
+        )
+      })}
+    </div>
+  )
+
   return (
-    <header className="header" ref={headerRef}>
+    <>
+      <header className="header" ref={headerRef}>
       <Link className="header__logo" to="/" aria-label="Арктик Дент">
         <img src="/assets/logo-header.png" alt="Арктик Дент" />
       </Link>
@@ -223,30 +290,7 @@ export default function Header() {
             </svg>
           </button>
 
-          <div
-            className="header__doctors-menu"
-            id="doctors-specialties-menu"
-            data-open={isDoctorsOpen}
-            aria-hidden={!isDoctorsOpen}
-          >
-            {doctorSpecialties.map((specialty) => {
-              const path = `/doctors/${specialty.slug}`
-              const isActive = currentPath === path
-
-              return (
-                <Link
-                  className={isActive ? 'is-active' : undefined}
-                  to={path}
-                  key={specialty.slug}
-                  aria-current={isActive ? 'page' : undefined}
-                  tabIndex={isDoctorsOpen ? 0 : -1}
-                  onClick={closeDoctorsMenu}
-                >
-                  {specialty.title}
-                </Link>
-              )
-            })}
-          </div>
+          {!usesDoctorsPortal && doctorsDropdown}
         </div>
 
         {navItems.map((item) => {
@@ -351,6 +395,8 @@ export default function Header() {
           </a>
         </div>
       </div>
-    </header>
+      </header>
+      {usesDoctorsPortal && createPortal(doctorsDropdown, document.body)}
+    </>
   )
 }

@@ -861,7 +861,7 @@ html.accessible-mode .header__social-link--accessibility {
     visibility 0s linear 0s;
 }
 
-.header__nav .header__doctors-menu a {
+.header__doctors-menu a {
   display: block;
   padding: 10px 12px;
   color: #152441;
@@ -879,13 +879,13 @@ html.accessible-mode .header__social-link--accessibility {
     transform 0.18s ease;
 }
 
-.header__nav .header__doctors-menu a::after {
+.header__doctors-menu a::after {
   display: none;
 }
 
-.header__nav .header__doctors-menu a:hover,
-.header__nav .header__doctors-menu a:focus-visible,
-.header__nav .header__doctors-menu a.is-active {
+.header__doctors-menu a:hover,
+.header__doctors-menu a:focus-visible,
+.header__doctors-menu a.is-active {
   color: #0757d7;
   background: rgba(229, 240, 255, 0.72);
   border-color: rgba(186, 214, 250, 0.68);
@@ -953,7 +953,7 @@ html.accessible-mode .header__social-link--accessibility {
     transform: translateY(0) scale(1);
   }
 
-  .header__nav .header__doctors-menu a {
+  .header__doctors-menu a {
     padding: 9px 10px;
     font-size: 13px;
   }
