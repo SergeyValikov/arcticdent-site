@@ -1,0 +1,210 @@
+.clinic-gallery {
+  width: min(100%, 560px);
+  min-width: 0;
+  margin: 0;
+  justify-self: end;
+}
+
+.clinic-gallery__viewport {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  min-width: 0;
+  overflow: hidden;
+  touch-action: pan-y;
+  background: #dceaff;
+  border: 1px solid rgba(226, 237, 251, 0.82);
+  border-radius: 30px;
+  box-shadow:
+    0 34px 86px rgba(18, 68, 132, 0.18),
+    0 8px 24px rgba(20, 84, 164, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.86);
+  isolation: isolate;
+}
+
+.clinic-gallery__viewport::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: inherit;
+  box-shadow: inset 0 0 44px rgba(255, 255, 255, 0.08);
+}
+
+.clinic-gallery__image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+  animation: clinic-gallery-reveal 0.72s cubic-bezier(0.2, 0.78, 0.2, 1) both;
+}
+
+.clinic-gallery__wash {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(5, 25, 61, 0.02) 40%, rgba(5, 25, 61, 0.56) 100%),
+    linear-gradient(120deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 44%);
+}
+
+.clinic-gallery__caption {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  left: 28px;
+  z-index: 3;
+  display: grid;
+  gap: 4px;
+  color: #ffffff;
+  text-shadow: 0 2px 18px rgba(0, 19, 50, 0.3);
+}
+
+.clinic-gallery__caption span {
+  font-size: 12px;
+  font-weight: 680;
+  line-height: 1;
+  opacity: 0.76;
+  text-transform: uppercase;
+}
+
+.clinic-gallery__caption strong {
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 760;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.clinic-gallery__controls {
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px;
+  color: #10264c;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  border-radius: 999px;
+  box-shadow:
+    0 15px 34px rgba(4, 26, 64, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px) saturate(128%);
+  -webkit-backdrop-filter: blur(14px) saturate(128%);
+}
+
+.clinic-gallery__controls button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  color: #075fdf;
+  background: rgba(255, 255, 255, 0.66);
+  border: 1px solid rgba(214, 229, 248, 0.74);
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    color 0.22s ease,
+    background 0.22s ease,
+    transform 0.22s ease;
+}
+
+.clinic-gallery__controls button:hover {
+  color: #ffffff;
+  background: #1265df;
+  transform: scale(1.04);
+}
+
+.clinic-gallery__controls button:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 2px;
+}
+
+.clinic-gallery__controls svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+@keyframes clinic-gallery-reveal {
+  0% {
+    opacity: 0.25;
+    filter: blur(7px) saturate(0.92);
+    transform: scale(1.045);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0) saturate(1);
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 860px) {
+  .clinic-gallery {
+    width: min(100%, 620px);
+    justify-self: center;
+  }
+
+  .clinic-gallery__viewport {
+    aspect-ratio: 5 / 6;
+  }
+}
+
+@media (max-width: 560px) {
+  .clinic-gallery__viewport {
+    aspect-ratio: 4 / 5;
+    border-radius: 23px;
+  }
+
+  .clinic-gallery__caption {
+    right: 19px;
+    bottom: 19px;
+    left: 19px;
+  }
+
+  .clinic-gallery__caption span {
+    font-size: 10px;
+  }
+
+  .clinic-gallery__caption strong {
+    font-size: 19px;
+  }
+
+  .clinic-gallery__controls {
+    right: 14px;
+    top: 14px;
+    gap: 3px;
+    padding: 5px;
+  }
+
+  .clinic-gallery__controls button {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clinic-gallery__image {
+    animation: none;
+  }
+
+  .clinic-gallery__controls button {
+    transition: none;
+  }
+}

@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import Advantages from './components/Advantages.jsx'
+import AboutPage from './pages/AboutPage.jsx'
 import ContactsPage from './pages/ContactsPage.jsx'
 import DoctorsPage from './pages/DoctorsPage.jsx'
 import PlaceholderPage from './pages/PlaceholderPage.jsx'
@@ -82,7 +83,7 @@ function AppLayout() {
             <Route path="/contacts" element={<ContactsPage />} />
             <Route path="/prices" element={<PlaceholderPage sectionTitle="Цены" />} />
             <Route path="/documents" element={<PlaceholderPage sectionTitle="Документы" />} />
-            <Route path="/about" element={<PlaceholderPage sectionTitle="О клинике" />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
         </div>
