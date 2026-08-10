@@ -39,8 +39,17 @@
             || isApplePhone
           var screenWidth = Math.min(screen.width || 9999, screen.height || 9999)
           var layoutViewport = window.innerWidth || root.clientWidth || screenWidth
+          var visualViewportWidth = window.visualViewport && window.visualViewport.width
+            ? window.visualViewport.width
+            : layoutViewport
+          var outerViewportWidth = window.outerWidth || layoutViewport
           var isPinchZoom = window.visualViewport && window.visualViewport.scale && window.visualViewport.scale > 1.01
-          var viewportWidth = Math.min(screenWidth, layoutViewport)
+          var viewportWidth = Math.min(
+            screenWidth,
+            layoutViewport,
+            visualViewportWidth,
+            outerViewportWidth,
+          )
 
           if (isPinchZoom && stableViewportWidth) {
             viewportWidth = stableViewportWidth
