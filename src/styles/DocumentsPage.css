@@ -319,7 +319,8 @@ html.real-mobile .documents-page {
   width: var(--real-vw, 100vw);
   max-width: var(--real-vw, 100vw);
   min-width: 0;
-  padding: calc(var(--actual-header-height, var(--header-height, 114px)) + 34px) 16px 56px;
+  min-height: 100svh;
+  padding: calc(var(--actual-header-height, 114px) + 40px) 16px 56px;
 }
 
 html.real-mobile .documents-page__inner,
@@ -327,6 +328,112 @@ html.real-mobile .documents-page__panel,
 html.real-mobile .documents-page__details,
 html.real-mobile .documents-page__detail,
 html.real-mobile .documents-page__license {
+  width: 100%;
   min-width: 0;
   max-width: 100%;
+}
+
+/* Real iOS Safari can keep a wider layout viewport than the visual viewport.
+   Repeat the compact layout behind the runtime marker so desktop grids cannot
+   be squeezed into narrow, one-character columns on an actual phone. */
+html.real-mobile .documents-page__eyebrow {
+  max-width: 100%;
+  margin-bottom: 14px;
+  white-space: normal;
+}
+
+html.real-mobile .documents-page__title {
+  max-width: 100%;
+  font-size: clamp(35px, calc(var(--real-vw, 100vw) * 0.1), 42px);
+  line-height: 1;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+html.real-mobile .documents-page__subtitle {
+  max-width: 100%;
+  margin: 16px 0 26px;
+  font-size: 17px;
+  line-height: 1.42;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+html.real-mobile .documents-page__panel {
+  padding: 22px 18px;
+  border-radius: 24px;
+}
+
+html.real-mobile .documents-page__company {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: start;
+  gap: 13px;
+  width: 100%;
+}
+
+html.real-mobile .documents-page__short-name {
+  max-width: 100%;
+  font-size: 22px;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+html.real-mobile .documents-page__status {
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.25;
+}
+
+html.real-mobile .documents-page__details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+html.real-mobile .documents-page__detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 5px;
+  padding: 15px 0;
+}
+
+html.real-mobile .documents-page__detail dt {
+  font-size: 13px;
+}
+
+html.real-mobile .documents-page__detail dd {
+  width: 100%;
+  font-size: 15px;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+html.real-mobile .documents-page__license {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  padding: 20px 18px;
+}
+
+html.real-mobile .documents-page__license-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 17px;
+}
+
+html.real-mobile .documents-page__license-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+html.real-mobile .documents-page__license strong {
+  max-width: 100%;
+  font-size: 20px;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+html.real-mobile .documents-page__license div > span {
+  overflow-wrap: break-word;
+  word-break: normal;
 }
