@@ -8,6 +8,7 @@ import Advantages from './components/Advantages.jsx'
 import AboutPage from './pages/AboutPage.jsx'
 import ContactsPage from './pages/ContactsPage.jsx'
 import DoctorsPage from './pages/DoctorsPage.jsx'
+import DocumentsPage from './pages/DocumentsPage.jsx'
 import PlaceholderPage from './pages/PlaceholderPage.jsx'
 import ServicesPage from './pages/ServicesPage.jsx'
 
@@ -82,7 +83,7 @@ function AppLayout() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/contacts" element={<ContactsPage />} />
             <Route path="/prices" element={<PlaceholderPage sectionTitle="Цены" />} />
-            <Route path="/documents" element={<PlaceholderPage sectionTitle="Документы" />} />
+            <Route path="/documents" element={<DocumentsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
