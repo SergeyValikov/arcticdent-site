@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { Link, useLocation } from 'react-router-dom'
 
 import { doctorSpecialties } from '../data/doctorSpecialties.js'
+import { forwardTelegram } from '../utils/uis.js'
 import './Header.css'
 
 const navItems = [
@@ -13,7 +14,7 @@ const navItems = [
 const messengerItems = [
   { id: 'vk', label: 'ВКонтакте', href: 'https://vk.ru/arcticdent', isExternal: true },
   { id: 'max', label: 'MAX', href: '#max' },
-  { id: 'telegram', label: 'Telegram', href: 'https://t.me/arcticdent51', isExternal: true },
+  { id: 'telegram', label: 'Telegram', href: '#telegram', onClick: forwardTelegram },
 ]
 
 const ACCESSIBLE_MODE_STORAGE_KEY = 'accessibleMode'
@@ -360,7 +361,10 @@ export default function Header() {
                   target={item.isExternal ? '_blank' : undefined}
                   rel={item.isExternal ? 'noreferrer' : undefined}
                   tabIndex={isMessengerOpen ? 0 : -1}
-                  onClick={() => setIsMessengerOpen(false)}
+                  onClick={(event) => {
+                    item.onClick?.(event)
+                    setIsMessengerOpen(false)
+                  }}
                 >
                   <MessengerIcon id={item.id} />
                 </a>
@@ -384,10 +388,9 @@ export default function Header() {
           </a>
           <a
             className="header__social-link header__social-link--telegram"
-            href="https://t.me/arcticdent51"
+            href="#telegram"
             aria-label="Telegram"
-            target="_blank"
-            rel="noreferrer"
+            onClick={forwardTelegram}
           >
             <svg viewBox="0 0 56 56" aria-hidden="true" focusable="false">
               <path d="M47.8 10.4 40.6 45c-.54 2.55-2.04 3.14-4.12 1.96l-11.4-8.4-5.5 5.3c-.62.6-1.12 1.1-2.3 1.1l.82-11.62 21.14-19.1c.92-.82-.2-1.28-1.42-.46L11.68 30.24.42 26.72c-2.45-.76-2.5-2.45.5-3.62L45.02 6.1c2.05-.76 3.84.5 2.78 4.3Z" />

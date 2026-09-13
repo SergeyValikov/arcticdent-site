@@ -1,5 +1,6 @@
 import './Hero.css'
 import Icon from './Icon.jsx'
+import { openAppointmentWidget } from '../utils/uis.js'
 
 const trustItems = [
   { icon: 'shield', title: 'Все', text: 'виды лечения' },
@@ -42,7 +43,7 @@ export default function Hero() {
           </div>
 
           <div className="hero-section__actions">
-            <a className="button button--primary" href="#appointment">
+            <a className="button button--primary" href="#appointment" onClick={openAppointmentWidget}>
               Записаться на консультацию
               <span aria-hidden="true">→</span>
             </a>

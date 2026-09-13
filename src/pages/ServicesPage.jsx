@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import Advantages from '../components/Advantages.jsx'
 import { services } from '../data/services.js'
+import { openAppointmentWidget } from '../utils/uis.js'
 import '../styles/ServicesPage.css'
 
 const AUTOPLAY_DELAY = 5200
@@ -279,7 +280,7 @@ export default function ServicesPage() {
             />
           </picture>
 
-          <a className="button button--primary services-slider__cta services-slider__cta--desktop" href="#appointment">
+          <a className="button button--primary services-slider__cta services-slider__cta--desktop" href="#appointment" onClick={openAppointmentWidget}>
             <strong>
               Записаться
               <br />
@@ -331,6 +332,7 @@ export default function ServicesPage() {
         <a
           className="button button--primary services-slider__cta services-slider__cta--mobile"
           href="#appointment"
+          onClick={openAppointmentWidget}
           data-nudge={isCtaNudging}
         >
           <strong>
