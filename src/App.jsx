@@ -9,7 +9,7 @@ import AboutPage from './pages/AboutPage.jsx'
 import ContactsPage from './pages/ContactsPage.jsx'
 import DoctorsPage from './pages/DoctorsPage.jsx'
 import DocumentsPage from './pages/DocumentsPage.jsx'
-import PlaceholderPage from './pages/PlaceholderPage.jsx'
+import PricesPage from './pages/PricesPage.jsx'
 import ServicesPage from './pages/ServicesPage.jsx'
 
 function HomePage() {
@@ -82,7 +82,7 @@ function AppLayout() {
             <Route path="/doctors/:specialtySlug" element={<DoctorsPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/contacts" element={<ContactsPage />} />
-            <Route path="/prices" element={<PlaceholderPage sectionTitle="Цены" />} />
+            <Route path="/prices" element={<PricesPage />} />
             <Route path="/documents" element={<DocumentsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="*" element={<HomePage />} />

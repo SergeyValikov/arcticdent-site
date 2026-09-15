@@ -1,87 +1,70 @@
-import { useRef } from 'react'
-
-const SOURCE_WIDTH = 1448
-const SOURCE_HEIGHT = 1086
-const TAP_MOVE_TOLERANCE = 10
-const TAP_MAX_DURATION = 700
-
-function getCropStyles(crop) {
-  const xPosition = (crop.x / (100 - crop.width)) * 100
-  const yPosition = (crop.y / (100 - crop.height)) * 100
-  const cropWidthPx = SOURCE_WIDTH * (crop.width / 100)
-  const cropHeightPx = SOURCE_HEIGHT * (crop.height / 100)
-
-  return {
-    '--doctor-bg-size-x': `${10000 / crop.width}%`,
-    '--doctor-bg-size-y': `${10000 / crop.height}%`,
-    '--doctor-bg-x': `${xPosition}%`,
-    '--doctor-bg-y': `${yPosition}%`,
-    '--doctor-card-ratio': `${cropWidthPx} / ${cropHeightPx}`,
-  }
-}
+import { useLayoutEffect, useRef, useState } from 'react'
 
 export default function DoctorCard({ doctor, isActive, onToggle }) {
-  const tapStartRef = useRef(null)
+  const [isHovered, setIsHovered] = useState(false)
+  const detailsRef = useRef(null)
+  const isOpen = isActive || isHovered
+  const detailsId = `doctor-details-${doctor.id}`
+  const hasEducation = doctor.education?.length > 0
 
-  const handlePointerDown = (event) => {
-    if (event.pointerType === 'mouse' && event.button !== 0) {
-      tapStartRef.current = null
-      return
+  useLayoutEffect(() => {
+    if (!isActive || !detailsRef.current) return
+
+    let frameId
+    const alignDetails = () => {
+      const bounds = detailsRef.current.getBoundingClientRect()
+      const headerBottom = document.querySelector('header')?.getBoundingClientRect().bottom ?? 0
+      const visibleTop = Math.max(0, headerBottom) + 14
+      const visibleBottom = window.innerHeight - 14
+      const offset = bounds.top < visibleTop
+        ? bounds.top - visibleTop
+        : Math.max(0, bounds.bottom - visibleBottom)
+
+      if (offset) window.scrollBy({ top: offset, behavior: 'instant' })
     }
-
-    tapStartRef.current = {
-      x: event.clientX,
-      y: event.clientY,
-      scrollY: window.scrollY,
-      time: performance.now(),
+    const scheduleAlignment = () => {
+      window.cancelAnimationFrame(frameId)
+      frameId = window.requestAnimationFrame(() => {
+        frameId = window.requestAnimationFrame(alignDetails)
+      })
     }
-  }
-
-  const handlePointerUp = (event) => {
-    const tapStart = tapStartRef.current
-    tapStartRef.current = null
-
-    if (!tapStart) {
-      return
+    scheduleAlignment()
+    window.addEventListener('resize', scheduleAlignment)
+    return () => {
+      window.cancelAnimationFrame(frameId)
+      window.removeEventListener('resize', scheduleAlignment)
     }
+  }, [isActive])
 
-    const deltaX = Math.abs(event.clientX - tapStart.x)
-    const deltaY = Math.abs(event.clientY - tapStart.y)
-    const scrollDelta = Math.abs(window.scrollY - tapStart.scrollY)
-    const elapsed = performance.now() - tapStart.time
-
-    if (deltaX <= TAP_MOVE_TOLERANCE && deltaY <= TAP_MOVE_TOLERANCE && scrollDelta <= TAP_MOVE_TOLERANCE && elapsed <= TAP_MAX_DURATION) {
-      event.preventDefault()
-      onToggle()
-    }
-  }
-
-  const handlePointerCancel = () => {
-    tapStartRef.current = null
-  }
-
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      onToggle()
-    }
+  const closeDetails = () => {
+    setIsHovered(false)
+    if (isActive) onToggle()
   }
 
   return (
     <article
-      className={`doctor-card${isActive ? ' is-active' : ''}`}
-      style={doctor.crop ? getCropStyles(doctor.crop) : undefined}
-      role="button"
-      tabIndex={0}
-      aria-label={`${doctor.name}. ${doctor.role}`}
-      aria-pressed={isActive}
-      onPointerDown={handlePointerDown}
-      onPointerUp={handlePointerUp}
-      onPointerCancel={handlePointerCancel}
-      onPointerLeave={handlePointerCancel}
-      onKeyDown={handleKeyDown}
+      className={`doctor-card${isOpen ? ' is-active' : ''}`}
+      onPointerEnter={(event) => {
+        if (event.pointerType === 'mouse' && window.matchMedia('(hover: hover)').matches) {
+          setIsHovered(true)
+        }
+      }}
+      onPointerLeave={() => setIsHovered(false)}
+      onKeyDown={(event) => {
+        if (event.key === 'Escape') closeDetails()
+      }}
     >
-      {doctor.image ? (
+      <button
+        className="doctor-card__trigger"
+        type="button"
+        aria-label={`${doctor.name}. ${hasEducation ? 'Образование врача' : doctor.role}`}
+        aria-expanded={isOpen}
+        aria-controls={detailsId}
+        onClick={() => {
+          if (isActive) closeDetails()
+          else onToggle()
+        }}
+      >
         <img
           className="doctor-card__image"
           src={doctor.image}
@@ -89,14 +72,38 @@ export default function DoctorCard({ doctor, isActive, onToggle }) {
           loading="lazy"
           decoding="async"
         />
-      ) : (
-        <div className="doctor-card__sprite" aria-hidden="true" />
-      )}
-      <div className="doctor-card__overlay" aria-hidden={!isActive}>
-        <div className="doctor-card__overlay-content">
+      </button>
+      <div className="doctor-card__overlay" id={detailsId} hidden={!isOpen}>
+        <div
+          ref={detailsRef}
+          className="doctor-card__overlay-content"
+          role="region"
+          aria-label={`${doctor.name}: сведения о враче`}
+          tabIndex={isOpen ? 0 : -1}
+          onClick={(event) => {
+            if (!isActive && !event.target.closest('button')) onToggle()
+          }}
+        >
+          <button className="doctor-card__close" type="button" onClick={closeDetails} aria-label="Закрыть сведения о враче">
+            ×
+          </button>
           <p className="doctor-card__name">{doctor.name}</p>
           <p className="doctor-card__role">{doctor.role}</p>
-          <p className="doctor-card__description">{doctor.description}</p>
+          {hasEducation ? (
+            <>
+              <h2 className="doctor-card__education-title">Образование</h2>
+              <ul className="doctor-card__education">
+                {doctor.education.map((item) => (
+                  <li key={`${item.year}-${item.title}`}>
+                    <p>{item.year && <strong>{item.year} — </strong>}{item.title}</p>
+                    {item.institution && <p className="doctor-card__institution">{item.institution}</p>}
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <p className="doctor-card__description">{doctor.description}</p>
+          )}
         </div>
       </div>
     </article>

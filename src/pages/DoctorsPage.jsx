@@ -28,20 +28,12 @@ export default function DoctorsPage() {
       }
     }
 
-    const closeOnPageMove = () => {
-      setActiveDoctorId(null)
-    }
-
     document.addEventListener('pointerdown', closeOnOutsideTap)
     document.addEventListener('keydown', closeOnEscape)
-    window.addEventListener('scroll', closeOnPageMove, { passive: true })
-    window.addEventListener('wheel', closeOnPageMove, { passive: true })
 
     return () => {
       document.removeEventListener('pointerdown', closeOnOutsideTap)
       document.removeEventListener('keydown', closeOnEscape)
-      window.removeEventListener('scroll', closeOnPageMove)
-      window.removeEventListener('wheel', closeOnPageMove)
     }
   }, [activeDoctorId])
 

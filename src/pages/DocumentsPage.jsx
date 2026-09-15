@@ -1,5 +1,35 @@
 import '../styles/DocumentsPage.css'
 
+const clinicDocuments = [
+  {
+    title: 'Выписка из реестра лицензий',
+    detail: 'На 06.08.2026',
+    preview: 'license-extract-2026-08-06.pdf',
+  },
+  {
+    title: 'Договор на оказание медицинских услуг',
+    preview: 'medical-services-contract.pdf',
+    original: 'medical-services-contract.docx',
+    format: 'DOCX',
+  },
+  {
+    title: 'Договор на оказание медицинских услуг с представителем',
+    preview: 'medical-services-contract-representative.pdf',
+    original: 'medical-services-contract-representative.rtf',
+    format: 'RTF',
+  },
+  {
+    title: 'Порядок рассмотрения обращений, жалоб и претензий',
+    detail: 'От 10.06.2026',
+    preview: 'complaints-procedure-2026-06-10.pdf',
+  },
+  {
+    title: 'Положение о гарантийных сроках стоматологических услуг',
+    detail: 'От 10.06.2026',
+    preview: 'dental-warranty-2026-06-10.pdf',
+  },
+]
+
 const companyDetails = [
   {
     label: 'Юридический адрес',
@@ -72,6 +102,43 @@ export default function DocumentsPage() {
             </div>
           </div>
         </div>
+
+        <section className="documents-page__files" aria-labelledby="clinic-documents-title">
+          <h2 id="clinic-documents-title">Документы клиники</h2>
+          <p className="documents-page__files-intro">
+            Откройте документ для просмотра или скачайте его на устройство.
+          </p>
+          <ul className="documents-page__file-list">
+            {clinicDocuments.map((document) => (
+              <li className="documents-page__file" key={document.preview}>
+                <span className="documents-page__file-icon" aria-hidden="true">PDF</span>
+                <div className="documents-page__file-info">
+                  <h3>{document.title}</h3>
+                  <p>{document.detail ? `${document.detail} · PDF` : 'PDF для просмотра'}</p>
+                </div>
+                <div className="documents-page__file-actions">
+                  <a
+                    className="documents-page__file-view"
+                    href={`/documents/${document.preview}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Просмотреть: ${document.title} (PDF, в новой вкладке)`}
+                  >
+                    Просмотреть
+                  </a>
+                  <a
+                    className="documents-page__file-download"
+                    href={`/documents/${document.original || document.preview}`}
+                    download
+                    aria-label={`Скачать: ${document.title} (${document.format || 'PDF'})`}
+                  >
+                    Скачать {document.format || 'PDF'}
+                  </a>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     </section>
   )
