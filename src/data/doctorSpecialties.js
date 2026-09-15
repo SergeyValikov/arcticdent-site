@@ -1,8 +1,10 @@
 import { doctorProfiles } from './doctorProfiles.js'
+import responsiveImages from './responsiveImages.json' with { type: 'json' }
 
 const createDoctors = (slug, title, imageFiles) => {
   return imageFiles.map(([filename, profileId], index) => {
     const number = String(index + 1).padStart(2, '0')
+    const image = responsiveImages[`/images/doctors/${slug}/${filename}`]
 
     return {
       id: `${slug}-${number}`,
@@ -10,7 +12,8 @@ const createDoctors = (slug, title, imageFiles) => {
       profileId,
       role: title,
       description: 'Подробная информация о враче скоро появится.',
-      image: `/images/doctors/${slug}/${filename}`,
+      image: image.src,
+      imageSrcSet: image.srcSet,
     }
   })
 }

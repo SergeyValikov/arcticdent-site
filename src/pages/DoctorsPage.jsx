@@ -49,9 +49,10 @@ export default function DoctorsPage() {
       </div>
 
       <div className="doctors-page__grid" aria-label={specialty.title}>
-        {specialty.doctors.map((doctor) => (
+        {specialty.doctors.map((doctor, index) => (
           <DoctorCard
             doctor={doctor}
+            priority={index === 0}
             isActive={activeDoctorId === doctor.id}
             key={doctor.id}
             onToggle={() => setActiveDoctorId((currentId) => (currentId === doctor.id ? null : doctor.id))}

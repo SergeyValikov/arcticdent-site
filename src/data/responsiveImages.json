@@ -1,0 +1,272 @@
+{
+  "/images/doctors/anesthesiologists/doctor-01-b08b1c13.png": {
+    "src": "/images/doctors/optimized/b08b1c133462-800.webp",
+    "srcSet": "/images/doctors/optimized/b08b1c133462-480.webp 480w, /images/doctors/optimized/b08b1c133462-800.webp 800w, /images/doctors/optimized/b08b1c133462-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/anesthesiologists/doctor-02-fbfa5fe6.png": {
+    "src": "/images/doctors/optimized/fbfa5fe6f231-800.webp",
+    "srcSet": "/images/doctors/optimized/fbfa5fe6f231-480.webp 480w, /images/doctors/optimized/fbfa5fe6f231-800.webp 800w, /images/doctors/optimized/fbfa5fe6f231-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/anesthesiologists/doctor-03-1765cb7c.png": {
+    "src": "/images/doctors/optimized/1765cb7c6663-800.webp",
+    "srcSet": "/images/doctors/optimized/1765cb7c6663-480.webp 480w, /images/doctors/optimized/1765cb7c6663-800.webp 800w, /images/doctors/optimized/1765cb7c6663-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/anesthesiologists/doctor-04-82ec26b4.png": {
+    "src": "/images/doctors/optimized/82ec26b45a70-800.webp",
+    "srcSet": "/images/doctors/optimized/82ec26b45a70-480.webp 480w, /images/doctors/optimized/82ec26b45a70-800.webp 800w, /images/doctors/optimized/82ec26b45a70-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/anesthesiologists/doctor-05-6f4efc59.jpg": {
+    "src": "/images/doctors/optimized/6f4efc597dda-800.webp",
+    "srcSet": "/images/doctors/optimized/6f4efc597dda-480.webp 480w, /images/doctors/optimized/6f4efc597dda-800.webp 800w, /images/doctors/optimized/6f4efc597dda-1024.webp 1024w",
+    "width": 1086,
+    "height": 1448
+  },
+  "/images/doctors/hygienists/doctor-01-c5cffeb5.png": {
+    "src": "/images/doctors/optimized/c5cffeb51a36-800.webp",
+    "srcSet": "/images/doctors/optimized/c5cffeb51a36-480.webp 480w, /images/doctors/optimized/c5cffeb51a36-800.webp 800w, /images/doctors/optimized/c5cffeb51a36-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/hygienists/doctor-02-ea28b515.png": {
+    "src": "/images/doctors/optimized/ea28b515a3cd-800.webp",
+    "srcSet": "/images/doctors/optimized/ea28b515a3cd-480.webp 480w, /images/doctors/optimized/ea28b515a3cd-800.webp 800w, /images/doctors/optimized/ea28b515a3cd-1024.webp 1024w",
+    "width": 1086,
+    "height": 1448
+  },
+  "/images/doctors/implantologists/doctor-01-6418129f.jpg": {
+    "src": "/images/doctors/optimized/6418129fb885-800.webp",
+    "srcSet": "/images/doctors/optimized/6418129fb885-480.webp 480w, /images/doctors/optimized/6418129fb885-800.webp 800w, /images/doctors/optimized/6418129fb885-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/implantologists/doctor-02-0081a27c.png": {
+    "src": "/images/doctors/optimized/0081a27c53fd-800.webp",
+    "srcSet": "/images/doctors/optimized/0081a27c53fd-480.webp 480w, /images/doctors/optimized/0081a27c53fd-800.webp 800w, /images/doctors/optimized/0081a27c53fd-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/leadership/doctor-01-c5cffeb5.png": {
+    "src": "/images/doctors/optimized/c5cffeb51a36-800.webp",
+    "srcSet": "/images/doctors/optimized/c5cffeb51a36-480.webp 480w, /images/doctors/optimized/c5cffeb51a36-800.webp 800w, /images/doctors/optimized/c5cffeb51a36-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/leadership/doctor-02-982a9f66.png": {
+    "src": "/images/doctors/optimized/982a9f667800-800.webp",
+    "srcSet": "/images/doctors/optimized/982a9f667800-480.webp 480w, /images/doctors/optimized/982a9f667800-800.webp 800w, /images/doctors/optimized/982a9f667800-1024.webp 1024w",
+    "width": 1086,
+    "height": 1448
+  },
+  "/images/doctors/leadership/doctor-03-6f4efc59.jpg": {
+    "src": "/images/doctors/optimized/6f4efc597dda-800.webp",
+    "srcSet": "/images/doctors/optimized/6f4efc597dda-480.webp 480w, /images/doctors/optimized/6f4efc597dda-800.webp 800w, /images/doctors/optimized/6f4efc597dda-1024.webp 1024w",
+    "width": 1086,
+    "height": 1448
+  },
+  "/images/doctors/orthodontists/doctor-01-d488f83f.png": {
+    "src": "/images/doctors/optimized/d488f83f717b-800.webp",
+    "srcSet": "/images/doctors/optimized/d488f83f717b-480.webp 480w, /images/doctors/optimized/d488f83f717b-800.webp 800w, /images/doctors/optimized/d488f83f717b-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/orthopedists/doctor-01-a76d6e15.png": {
+    "src": "/images/doctors/optimized/a76d6e1595b7-800.webp",
+    "srcSet": "/images/doctors/optimized/a76d6e1595b7-480.webp 480w, /images/doctors/optimized/a76d6e1595b7-800.webp 800w, /images/doctors/optimized/a76d6e1595b7-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/orthopedists/doctor-02-673017cd.png": {
+    "src": "/images/doctors/optimized/673017cdc459-800.webp",
+    "srcSet": "/images/doctors/optimized/673017cdc459-480.webp 480w, /images/doctors/optimized/673017cdc459-800.webp 800w, /images/doctors/optimized/673017cdc459-1024.webp 1024w",
+    "width": 1086,
+    "height": 1448
+  },
+  "/images/doctors/orthopedists/doctor-03-5fc0ad0c.png": {
+    "src": "/images/doctors/optimized/5fc0ad0c6f8b-800.webp",
+    "srcSet": "/images/doctors/optimized/5fc0ad0c6f8b-480.webp 480w, /images/doctors/optimized/5fc0ad0c6f8b-800.webp 800w, /images/doctors/optimized/5fc0ad0c6f8b-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/pediatric-dentists/doctor-01-982a9f66.png": {
+    "src": "/images/doctors/optimized/982a9f667800-800.webp",
+    "srcSet": "/images/doctors/optimized/982a9f667800-480.webp 480w, /images/doctors/optimized/982a9f667800-800.webp 800w, /images/doctors/optimized/982a9f667800-1024.webp 1024w",
+    "width": 1086,
+    "height": 1448
+  },
+  "/images/doctors/pediatric-dentists/doctor-02-73fd9df8.png": {
+    "src": "/images/doctors/optimized/73fd9df8de7d-800.webp",
+    "srcSet": "/images/doctors/optimized/73fd9df8de7d-480.webp 480w, /images/doctors/optimized/73fd9df8de7d-800.webp 800w, /images/doctors/optimized/73fd9df8de7d-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/pediatric-dentists/doctor-03-f62eb175.png": {
+    "src": "/images/doctors/optimized/f62eb1751109-800.webp",
+    "srcSet": "/images/doctors/optimized/f62eb1751109-480.webp 480w, /images/doctors/optimized/f62eb1751109-800.webp 800w, /images/doctors/optimized/f62eb1751109-1024.webp 1024w",
+    "width": 1024,
+    "height": 1536
+  },
+  "/images/doctors/periodontists/doctor-01-0081a27c.png": {
+    "src": "/images/doctors/optimized/0081a27c53fd-800.webp",
+    "srcSet": "/images/doctors/optimized/0081a27c53fd-480.webp 480w, /images/doctors/optimized/0081a27c53fd-800.webp 800w, /images/doctors/optimized/0081a27c53fd-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/surgeons/doctor-01-6418129f.jpg": {
+    "src": "/images/doctors/optimized/6418129fb885-800.webp",
+    "srcSet": "/images/doctors/optimized/6418129fb885-480.webp 480w, /images/doctors/optimized/6418129fb885-800.webp 800w, /images/doctors/optimized/6418129fb885-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/surgeons/doctor-02-bf71bd02.png": {
+    "src": "/images/doctors/optimized/bf71bd02864a-800.webp",
+    "srcSet": "/images/doctors/optimized/bf71bd02864a-480.webp 480w, /images/doctors/optimized/bf71bd02864a-800.webp 800w, /images/doctors/optimized/bf71bd02864a-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/surgeons/doctor-03-0081a27c.png": {
+    "src": "/images/doctors/optimized/0081a27c53fd-800.webp",
+    "srcSet": "/images/doctors/optimized/0081a27c53fd-480.webp 480w, /images/doctors/optimized/0081a27c53fd-800.webp 800w, /images/doctors/optimized/0081a27c53fd-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/surgeons/doctor-04-75fd869d.png": {
+    "src": "/images/doctors/optimized/75fd869dbb2d-800.webp",
+    "srcSet": "/images/doctors/optimized/75fd869dbb2d-480.webp 480w, /images/doctors/optimized/75fd869dbb2d-800.webp 800w, /images/doctors/optimized/75fd869dbb2d-1024.webp 1024w",
+    "width": 1086,
+    "height": 1448
+  },
+  "/images/doctors/surgeons/doctor-05-1b1cd938.jpg": {
+    "src": "/images/doctors/optimized/1b1cd9383bdc-800.webp",
+    "srcSet": "/images/doctors/optimized/1b1cd9383bdc-480.webp 480w, /images/doctors/optimized/1b1cd9383bdc-800.webp 800w, /images/doctors/optimized/1b1cd9383bdc-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/therapists/doctor-01-c5cffeb5.png": {
+    "src": "/images/doctors/optimized/c5cffeb51a36-800.webp",
+    "srcSet": "/images/doctors/optimized/c5cffeb51a36-480.webp 480w, /images/doctors/optimized/c5cffeb51a36-800.webp 800w, /images/doctors/optimized/c5cffeb51a36-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/therapists/doctor-02-bf71bd02.png": {
+    "src": "/images/doctors/optimized/bf71bd02864a-800.webp",
+    "srcSet": "/images/doctors/optimized/bf71bd02864a-480.webp 480w, /images/doctors/optimized/bf71bd02864a-800.webp 800w, /images/doctors/optimized/bf71bd02864a-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/therapists/doctor-03-6db36bb6.png": {
+    "src": "/images/doctors/optimized/6db36bb61b37-800.webp",
+    "srcSet": "/images/doctors/optimized/6db36bb61b37-480.webp 480w, /images/doctors/optimized/6db36bb61b37-800.webp 800w, /images/doctors/optimized/6db36bb61b37-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/therapists/doctor-04-07109199.png": {
+    "src": "/images/doctors/optimized/07109199b191-800.webp",
+    "srcSet": "/images/doctors/optimized/07109199b191-480.webp 480w, /images/doctors/optimized/07109199b191-800.webp 800w, /images/doctors/optimized/07109199b191-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/therapists/doctor-05-788792d8.png": {
+    "src": "/images/doctors/optimized/788792d8c283-800.webp",
+    "srcSet": "/images/doctors/optimized/788792d8c283-480.webp 480w, /images/doctors/optimized/788792d8c283-800.webp 800w, /images/doctors/optimized/788792d8c283-1024.webp 1024w",
+    "width": 1122,
+    "height": 1402
+  },
+  "/images/doctors/therapists/doctor-06-117fd944.png": {
+    "src": "/images/doctors/optimized/117fd9444e28-800.webp",
+    "srcSet": "/images/doctors/optimized/117fd9444e28-480.webp 480w, /images/doctors/optimized/117fd9444e28-800.webp 800w, /images/doctors/optimized/117fd9444e28-1024.webp 1024w",
+    "width": 1086,
+    "height": 1448
+  },
+  "/images/doctors/therapists/doctor-07-f4ab455d.png": {
+    "src": "/images/doctors/optimized/f4ab455de3c5-800.webp",
+    "srcSet": "/images/doctors/optimized/f4ab455de3c5-480.webp 480w, /images/doctors/optimized/f4ab455de3c5-800.webp 800w, /images/doctors/optimized/f4ab455de3c5-1024.webp 1024w",
+    "width": 1086,
+    "height": 1448
+  },
+  "/images/services/cleaning.png": {
+    "src": "/images/services/optimized/cleaning-6bbe5e64d3d7-1535.webp",
+    "srcSet": "/images/services/optimized/cleaning-6bbe5e64d3d7-960.webp 960w, /images/services/optimized/cleaning-6bbe5e64d3d7-1535.webp 1535w",
+    "width": 1535,
+    "height": 1024
+  },
+  "/images/services/kids-dentistry.png": {
+    "src": "/images/services/optimized/kids-dentistry-d532f9f3e729-1535.webp",
+    "srcSet": "/images/services/optimized/kids-dentistry-d532f9f3e729-960.webp 960w, /images/services/optimized/kids-dentistry-d532f9f3e729-1535.webp 1535w",
+    "width": 1535,
+    "height": 1024
+  },
+  "/images/services/microsurgery.png": {
+    "src": "/images/services/optimized/microsurgery-f6642bd29c85-1535.webp",
+    "srcSet": "/images/services/optimized/microsurgery-f6642bd29c85-960.webp 960w, /images/services/optimized/microsurgery-f6642bd29c85-1535.webp 1535w",
+    "width": 1536,
+    "height": 1024
+  },
+  "/images/services/orthodontics.png": {
+    "src": "/images/services/optimized/orthodontics-c252070020a9-1535.webp",
+    "srcSet": "/images/services/optimized/orthodontics-c252070020a9-960.webp 960w, /images/services/optimized/orthodontics-c252070020a9-1535.webp 1535w",
+    "width": 1535,
+    "height": 1024
+  },
+  "/images/services/orthopedia.png": {
+    "src": "/images/services/optimized/orthopedia-2478b135993e-1535.webp",
+    "srcSet": "/images/services/optimized/orthopedia-2478b135993e-960.webp 960w, /images/services/optimized/orthopedia-2478b135993e-1535.webp 1535w",
+    "width": 1536,
+    "height": 1024
+  },
+  "/images/services/sedation.png": {
+    "src": "/images/services/optimized/sedation-c7b143e9b1f3-1535.webp",
+    "srcSet": "/images/services/optimized/sedation-c7b143e9b1f3-960.webp 960w, /images/services/optimized/sedation-c7b143e9b1f3-1535.webp 1535w",
+    "width": 1535,
+    "height": 1024
+  },
+  "/images/services/mobile/cleaning-mobile.png": {
+    "src": "/images/services/optimized/cleaning-mobile-c52c872204c2-760.webp",
+    "srcSet": "/images/services/optimized/cleaning-mobile-c52c872204c2-480.webp 480w, /images/services/optimized/cleaning-mobile-c52c872204c2-760.webp 760w, /images/services/optimized/cleaning-mobile-c52c872204c2-941.webp 941w",
+    "width": 941,
+    "height": 1672
+  },
+  "/images/services/mobile/kids-dentistry-mobile.png": {
+    "src": "/images/services/optimized/kids-dentistry-mobile-6503843afa68-760.webp",
+    "srcSet": "/images/services/optimized/kids-dentistry-mobile-6503843afa68-480.webp 480w, /images/services/optimized/kids-dentistry-mobile-6503843afa68-760.webp 760w, /images/services/optimized/kids-dentistry-mobile-6503843afa68-941.webp 941w",
+    "width": 941,
+    "height": 1672
+  },
+  "/images/services/mobile/microsurgery-mobile.png": {
+    "src": "/images/services/optimized/microsurgery-mobile-4750fb14d584-760.webp",
+    "srcSet": "/images/services/optimized/microsurgery-mobile-4750fb14d584-480.webp 480w, /images/services/optimized/microsurgery-mobile-4750fb14d584-760.webp 760w, /images/services/optimized/microsurgery-mobile-4750fb14d584-941.webp 941w",
+    "width": 941,
+    "height": 1672
+  },
+  "/images/services/mobile/orthodontics-mobile.png": {
+    "src": "/images/services/optimized/orthodontics-mobile-a66cd0d2af5d-760.webp",
+    "srcSet": "/images/services/optimized/orthodontics-mobile-a66cd0d2af5d-480.webp 480w, /images/services/optimized/orthodontics-mobile-a66cd0d2af5d-760.webp 760w, /images/services/optimized/orthodontics-mobile-a66cd0d2af5d-941.webp 941w",
+    "width": 941,
+    "height": 1672
+  },
+  "/images/services/mobile/orthopedia-mobile.png": {
+    "src": "/images/services/optimized/orthopedia-mobile-83d3b161fc5d-760.webp",
+    "srcSet": "/images/services/optimized/orthopedia-mobile-83d3b161fc5d-480.webp 480w, /images/services/optimized/orthopedia-mobile-83d3b161fc5d-760.webp 760w, /images/services/optimized/orthopedia-mobile-83d3b161fc5d-941.webp 941w",
+    "width": 941,
+    "height": 1672
+  },
+  "/images/services/mobile/sedation-mobile.png": {
+    "src": "/images/services/optimized/sedation-mobile-04bc4cc34b03-760.webp",
+    "srcSet": "/images/services/optimized/sedation-mobile-04bc4cc34b03-480.webp 480w, /images/services/optimized/sedation-mobile-04bc4cc34b03-760.webp 760w, /images/services/optimized/sedation-mobile-04bc4cc34b03-941.webp 941w",
+    "width": 941,
+    "height": 1672
+  },
+  "/images/services/mobile/hand-swipe.png": {
+    "src": "/images/services/optimized/hand-swipe-c0b9e43e8524-180.webp",
+    "srcSet": "/images/services/optimized/hand-swipe-c0b9e43e8524-180.webp 180w",
+    "width": 600,
+    "height": 747
+  }
+}

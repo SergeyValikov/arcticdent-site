@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import Advantages from '../components/Advantages.jsx'
 import { services } from '../data/services.js'
+import responsiveImages from '../data/responsiveImages.json'
 import { openAppointmentWidget } from '../utils/uis.js'
 import '../styles/ServicesPage.css'
 
@@ -191,7 +192,6 @@ export default function ServicesPage() {
       setIsAccessibleMode(Boolean(event.detail?.enabled))
     }
 
-    setIsAccessibleMode(isAccessibleModeEnabled())
     window.addEventListener('accessiblemodechange', syncAccessibleMode)
 
     return () => {
@@ -232,19 +232,23 @@ export default function ServicesPage() {
     }
   }, [])
 
-  useEffect(() => {
-    const imagesToPreload = services.map((service) => (
-      usesMobileServiceImage ? service.mobileImage : service.desktopImage
-    ))
-
-    imagesToPreload.forEach((src) => {
-      const image = new Image()
-      image.src = src
-    })
-  }, [usesMobileServiceImage])
-
   const activeService = services[activeIndex]
-  const activeServiceImage = usesMobileServiceImage ? activeService.mobileImage : activeService.desktopImage
+  const activeServiceImage = responsiveImages[usesMobileServiceImage ? activeService.mobileImage : activeService.desktopImage]
+  const imageSizes = usesMobileServiceImage
+    ? '(max-width: 380px) calc(100vw - 24px), (max-width: 390px) calc(100vw - 28px), 362px'
+    : '(max-width: 1024px) calc(100vw - 104px), (max-width: 1266px) calc(100vw - 152px), 88vw'
+
+  const preloadNextService = () => {
+    if (navigator.connection?.saveData || /(^|-)2g$/.test(navigator.connection?.effectiveType ?? '')) return
+
+    const nextService = services[(activeIndex + 1) % services.length]
+    const nextImage = responsiveImages[usesMobileServiceImage ? nextService.mobileImage : nextService.desktopImage]
+    const image = new Image()
+    image.fetchPriority = 'low'
+    image.sizes = imageSizes
+    image.srcset = nextImage.srcSet
+    image.src = nextImage.src
+  }
 
   return (
     <section className="services-page" aria-labelledby="services-page-title">
@@ -263,20 +267,17 @@ export default function ServicesPage() {
         >
           <picture className="services-slider__picture" key={`${activeService.id}-${usesMobileServiceImage ? 'mobile' : 'desktop'}`}>
             <img
-              className="services-slider__image-blur"
-              src={activeServiceImage}
-              alt=""
-              aria-hidden="true"
-              decoding="async"
-              draggable="false"
-            />
-            <img
               className="services-slider__image"
-              src={activeServiceImage}
+              src={activeServiceImage.src}
+              srcSet={activeServiceImage.srcSet}
+              sizes={imageSizes}
+              width={activeServiceImage.width}
+              height={activeServiceImage.height}
               alt={activeService.title}
               decoding="async"
               draggable="false"
               fetchPriority={activeIndex === 0 ? 'high' : 'auto'}
+              onLoad={preloadNextService}
             />
           </picture>
 
@@ -294,7 +295,7 @@ export default function ServicesPage() {
             data-visible={!isSwipeHintDismissed}
             aria-hidden="true"
           >
-            <img src="/images/services/mobile/hand-swipe.png" alt="" />
+            <img src={responsiveImages['/images/services/mobile/hand-swipe.png'].src} alt="" />
           </div>
         </div>
 

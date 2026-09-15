@@ -1,4 +1,12 @@
 const icons = {
+  priceList: (
+    <>
+      <path d="M10.5 20H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l4 4v3.5" fill="#fff" />
+      <path d="M13 3v3a1 1 0 0 0 1 1h3M7 9h5M7 12h3M7 15h2" />
+      <circle cx="17" cy="17" r="5.5" fill="currentColor" stroke="none" />
+      <path d="M16 20v-6h2a1.65 1.65 0 0 1 0 3.3h-3.2M14.8 18.7h3.4" stroke="#fff" strokeWidth="1.2" />
+    </>
+  ),
   shield: (
     <path d="M12 3.25 5.75 5.6v4.85c0 4.1 2.66 7.78 6.25 9.05 3.59-1.27 6.25-4.95 6.25-9.05V5.6L12 3.25Zm3.05 6.35-3.9 3.9-1.92-1.92" />
   ),

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 
-export default function DoctorCard({ doctor, isActive, onToggle }) {
+export default function DoctorCard({ doctor, isActive, onToggle, priority = false }) {
   const [isHovered, setIsHovered] = useState(false)
   const detailsRef = useRef(null)
   const isOpen = isActive || isHovered
@@ -68,8 +68,11 @@ export default function DoctorCard({ doctor, isActive, onToggle }) {
         <img
           className="doctor-card__image"
           src={doctor.image}
+          srcSet={doctor.imageSrcSet}
+          sizes="(max-width: 456px) calc(100vw - 36px), (max-width: 560px) 420px, (hover: none) and (pointer: coarse) 420px, (max-width: 804px) calc((100vw - 66px) / 2), (max-width: 1024px) 369px, (max-width: 1440px) calc((92vw - 84px) / 4), 309px"
           alt=""
-          loading="lazy"
+          loading={priority ? 'eager' : 'lazy'}
+          fetchPriority={priority ? 'high' : 'auto'}
           decoding="async"
         />
       </button>
